@@ -6,6 +6,9 @@
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         <activity android:name=".AddScoreActivity"
                   android:label="@string/app_name">
+        </activity>
+        <activity android:name=".StartGameSessionActivity"
+                  android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -14,5 +17,6 @@
 
     </application>
     <uses-sdk android:minSdkVersion="4" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
 
 </manifest> 

@@ -13,4 +13,8 @@
     <string name="east">East</string>
     <string name="hello">Hello World, AddScoreActivity!</string>
     <string name="app_name">Mahjongg Calculator</string>
+    <string name="player1">Player 1</string>
+    <string name="player2">Player 2</string>
+    <string name="player3">Player 3</string>
+    <string name="player4">Player 4</string>
 </resources>

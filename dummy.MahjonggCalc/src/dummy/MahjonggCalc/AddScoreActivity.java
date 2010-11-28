@@ -17,16 +17,45 @@ import java.util.List;
 public class AddScoreActivity extends Activity {
 	private static final String TAG = "AddScoreActivity";
     private RoundScoreCalculator calculator = new RoundScoreCalculator();
+    private TextView[][] labelArray;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_score_activity);
-    }
 
-    public void onLabelClick(View view) {
-    	Log.d(TAG, "onLabelClick");
+        labelArray = new TextView[][] {
+                {
+                        (TextView)findViewById(R.id.lblResult00),
+                        (TextView)findViewById(R.id.lblResult01),
+                        (TextView)findViewById(R.id.lblResult02),
+                        (TextView)findViewById(R.id.lblResult03),
+                        (TextView)findViewById(R.id.lblResult04)
+                },
+                {
+                        (TextView)findViewById(R.id.lblResult10),
+                        (TextView)findViewById(R.id.lblResult11),
+                        (TextView)findViewById(R.id.lblResult12),
+                        (TextView)findViewById(R.id.lblResult13),
+                        (TextView)findViewById(R.id.lblResult14)
+                },
+                {
+                        (TextView)findViewById(R.id.lblResult20),
+                        (TextView)findViewById(R.id.lblResult21),
+                        (TextView)findViewById(R.id.lblResult22),
+                        (TextView)findViewById(R.id.lblResult23),
+                        (TextView)findViewById(R.id.lblResult24)
+                },
+                {
+                        (TextView)findViewById(R.id.lblResult30),
+                        (TextView)findViewById(R.id.lblResult31),
+                        (TextView)findViewById(R.id.lblResult32),
+                        (TextView)findViewById(R.id.lblResult33),
+                        (TextView)findViewById(R.id.lblResult34)
+                }
+        };
+        refreshResult();
     }
 
     public void onSetPointsClick(View view) {
@@ -101,38 +130,6 @@ public class AddScoreActivity extends Activity {
 
     private void refreshResult() {
         Integer[][] result = calculator.getResult();
-//        final List<TextView> labelList = new ArrayList<TextView>();
-//        labelList.add((TextView) findViewById(R.id.lblPoints1));
-        TextView[][] labelArray = new TextView[][] {
-                {
-                        (TextView)findViewById(R.id.lblResult00),
-                        (TextView)findViewById(R.id.lblResult01),
-                        (TextView)findViewById(R.id.lblResult02),
-                        (TextView)findViewById(R.id.lblResult03),
-                        (TextView)findViewById(R.id.lblResult04)
-                },
-                {
-                        (TextView)findViewById(R.id.lblResult10),
-                        (TextView)findViewById(R.id.lblResult11),
-                        (TextView)findViewById(R.id.lblResult12),
-                        (TextView)findViewById(R.id.lblResult13),
-                        (TextView)findViewById(R.id.lblResult14)
-                },
-                {
-                        (TextView)findViewById(R.id.lblResult20),
-                        (TextView)findViewById(R.id.lblResult21),
-                        (TextView)findViewById(R.id.lblResult22),
-                        (TextView)findViewById(R.id.lblResult23),
-                        (TextView)findViewById(R.id.lblResult24)
-                },
-                {
-                        (TextView)findViewById(R.id.lblResult30),
-                        (TextView)findViewById(R.id.lblResult31),
-                        (TextView)findViewById(R.id.lblResult32),
-                        (TextView)findViewById(R.id.lblResult33),
-                        (TextView)findViewById(R.id.lblResult34)
-                }
-        };
 
         for (int x = 0; x < 4; x++) {
             Integer sum = 0;
