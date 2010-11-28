@@ -2,7 +2,7 @@ gen
 bin
 *.log
 out
-.idea
-*.iml
-*.ipr
-*.iws
+#.idea
+#*.iml
+#*.ipr
+#*.iws
