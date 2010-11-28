@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="nobody">Nobody</string>
     <string name="mahjongg">Mahjongg</string>
     <string name="sum">Sum</string>
     <string name="save">Save</string>
