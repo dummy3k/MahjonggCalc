@@ -63,4 +63,8 @@ public class RoundScoreCalculator {
     		}
 		return retval;
 	}
+
+    public String getPlayerName(int index) {
+        return "Player " + (index + 1);
+    }
 }
