@@ -8,14 +8,14 @@ public class RoundScoreCalculatorTest extends AndroidTestCase {
     	RoundScoreCalculator calculator = new RoundScoreCalculator();
     	Integer result[][] = calculator.getResult();
     	for (int x = 0; x < 4; x++)
-    		for (int y = 0; x < 4; x++) {
+    		for (int y = 0; y < 4; y++) {
     			assertNull(result[x][y]);
     		}
       }
 
     private void assertEqualArray(Integer[][] array1, Integer[][] array2) {
     	for (int x = 0; x < 4; x++)
-    		for (int y = 0; x < 4; x++) {
+    		for (int y = 0; y < 4; y++) {
     			assertEquals(array1[x][y], array2[x][y]);
     		}
     }
@@ -38,14 +38,29 @@ public class RoundScoreCalculatorTest extends AndroidTestCase {
     	calculator.setPlayerScore(0, 10);
     	calculator.setPlayerScore(1, 20);
     	
-    	Integer result[][] = calculator.getResult();
-    	Integer retval [][] = new Integer[][] {
-    			new Integer[] {null, -10, null, null},
-    			new Integer[] {10, null, null, null},
-    			new Integer[] {null, null, null, null},
-    			new Integer[] {null, null, null, null}
+    	Integer actualResult[][] = calculator.getResult();
+    	Integer expectedResult [][] = new Integer[][] {
+    			{null, -10, null, null},
+    			{10, null, null, null},
+    			{null, null, null, null},
+    			{null, null, null, null}
     	};
-    	assertEqualArray(retval, result);
+    	assertEqualArray(expectedResult, actualResult);
+    }
+
+    public void testThreePlayers() {
+    	RoundScoreCalculator calculator = new RoundScoreCalculator();
+    	calculator.setPlayerScore(0, 10);
+    	calculator.setPlayerScore(1, 20);
+    	calculator.setPlayerScore(3, 50);
     	
+    	Integer actualResult[][] = calculator.getResult();
+    	Integer expectedResult [][] = new Integer[][] {
+    			{null, -10, null, -40},
+    			{10, null, null, -30},
+    			{null, null, null, null},
+    			{40, 30, null, null}
+    	};
+    	assertEqualArray(expectedResult, actualResult);
     }
 }

@@ -9,15 +9,15 @@ public class RoundScoreCalculator {
 	
 	public Integer[][] getResult() {
 		Integer retval [][] = new Integer[][] {
-				new Integer[] {null, null, null, null},
-				new Integer[] {null, null, null, null},
-				new Integer[] {null, null, null, null},
-				new Integer[] {null, null, null, null}
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null}
 				};
 		
     	for (int x = 0; x < 4; x++)
-    		for (int y = x + 1; x < 4; x++) 
-    			if (playerScores[x] != null && playerScores[x] != null)
+    		for (int y = x + 1; y < 4; y++) 
+    			if (playerScores[x] != null && playerScores[y] != null)
 	    		{
 	    			retval[x][y] = playerScores[x] - playerScores[y];
 	    			retval[y][x] = playerScores[y] - playerScores[x];
