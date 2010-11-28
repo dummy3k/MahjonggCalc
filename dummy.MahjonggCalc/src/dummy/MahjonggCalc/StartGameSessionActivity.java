@@ -12,17 +12,23 @@ import android.view.ViewParent;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.google.inject.Inject;
+import dummy.MahjonggCalc.db.model.Person;
+import dummy.MahjonggCalc.db.service.PersonService;
+import roboguice.activity.GuiceActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StartGameSessionActivity extends Activity {
+public class StartGameSessionActivity extends GuiceActivity {
     private static final String TAG = "StartGameSessionActivity";
     private static final int REQUEST_PICK_CONTACT = 1;
     private Integer currentPlayer = null;
     private List<ImageView> imageViews;
     private List<TextView> textViews;
 
+    @Inject
+    private PersonService personService;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +71,8 @@ public class StartGameSessionActivity extends Activity {
         Log.d(TAG, "onSelectPerson");
         currentPlayer = playerByView(view);
         Log.d(TAG, "currentPlayer: " + currentPlayer);
-        Person.startPickActivityForResult(this, REQUEST_PICK_CONTACT);
+//        Person.startPickActivityForResult(this, REQUEST_PICK_CONTACT);
+        personService.startPickActivityForResult(REQUEST_PICK_CONTACT);
     }
 
 
@@ -77,7 +84,7 @@ public class StartGameSessionActivity extends Activity {
         switch (reqCode) {
             case (REQUEST_PICK_CONTACT):
                 if (resultCode == Activity.RESULT_OK) {
-                    Person person = Person.fromActivityResult(this, data);
+                    Person person = personService.fromActivityResult(data);
                     Log.d(TAG, "Person: " + person.getName());
                     imageViews.get(currentPlayer).setImageBitmap(person.getImage());
                     textViews.get(currentPlayer).setText(person.getName());
