@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="mahjongg">Mahjongg</string>
+    <string name="sum">Sum</string>
+    <string name="save">Save</string>
+    <string name="north">North</string>
+    <string name="west">West</string>
+    <string name="set">Set</string>
+    <string name="points">Points</string>
+    <string name="player_name">Player Name</string>
+    <string name="south">South</string>
+    <string name="east">East</string>
     <string name="hello">Hello World, AddScoreActivity!</string>
     <string name="app_name">Mahjongg Calculator</string>
 </resources>
