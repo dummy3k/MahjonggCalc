@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_table_game_sessions">
+        CREATE TABLE game_sessions (
+            id INTEGER PRIMARY KEY,
+            time_stamp DATE
+        );
+    </string>
+    <string name="create_table_rounds">
+        CREATE TABLE rounds (
+            id INTEGER PRIMARY KEY,
+            game_session_id INTEGER PRIMARY KEY,
+            time_stamp DATE,
+            FOREIGN KEY(game_session_id) REFERENCES game_sessions(id)
+        );
+    </string>
+</resources>
