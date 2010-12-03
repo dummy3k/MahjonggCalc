@@ -1,15 +1,12 @@
 package dummy.MahjonggCalc.db.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GameSession implements Model {
 	private Long id;
-//	private List<LocationCell> locationCells;
-
-    public GameSession() {
-//        locationCells = new ArrayList<LocationCell>();
-    }
+    private Date timeStamp;
 
 	@Override
 	public String toString() {
@@ -23,4 +20,12 @@ public class GameSession implements Model {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+    public Date getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(Date timeStamp) {
+        this.timeStamp = timeStamp;
+    }
 }

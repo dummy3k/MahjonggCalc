@@ -139,6 +139,11 @@
 </TableRow>
 </TableLayout>
 
-<Button android:id="@+id/Button02" android:layout_height="wrap_content" android:text="@string/save" android:layout_width="fill_parent"/>
+<Button android:id="@+id/Button02"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:layout_width="fill_parent"
+        android:onClick="onSaveClick"
+        />
 
 </LinearLayout>

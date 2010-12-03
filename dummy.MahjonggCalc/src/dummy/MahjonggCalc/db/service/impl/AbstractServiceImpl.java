@@ -2,6 +2,7 @@ package dummy.MahjonggCalc.db.service.impl;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -9,7 +10,6 @@ import com.google.inject.Inject;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import dummy.MahjonggCalc.DatabaseHelper;
 import dummy.MahjonggCalc.db.model.Model;
 import dummy.MahjonggCalc.db.service.Service;
 
@@ -20,7 +20,7 @@ public abstract class AbstractServiceImpl<T extends Model> implements Service<T>
 	protected abstract ContentValues write(T obj);
 	protected abstract String getTableName();
 	
-	protected SimpleDateFormat dateFormat = 
+	private SimpleDateFormat dateFormat =
 		new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public T findById(Long id) {
@@ -101,4 +101,17 @@ public abstract class AbstractServiceImpl<T extends Model> implements Service<T>
 		db.delete(getTableName(), "id = ?", new String[] {obj.getId().toString()});
 		db.close();
 	}
+
+    protected Date parseDate(Cursor cursor, String field) {
+        try {
+            return dateFormat.parse(cursor.getString(cursor.getColumnIndex(field)));
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    protected String formatDate(Date date) {
+        if (date == null) return null;
+        return dateFormat.format(date);
+    }
 }

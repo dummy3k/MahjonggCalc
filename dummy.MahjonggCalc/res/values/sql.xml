@@ -9,8 +9,19 @@
     <string name="create_table_rounds">
         CREATE TABLE rounds (
             id INTEGER PRIMARY KEY,
-            game_session_id INTEGER PRIMARY KEY,
             time_stamp DATE,
+            game_session_id INTEGER,
+            FOREIGN KEY(game_session_id) REFERENCES game_sessions(id)
+        );
+    </string>
+    <string name="create_table_player_rounds">
+        CREATE TABLE player_rounds (
+            id INTEGER PRIMARY KEY,
+            round_id INTEGER,
+            game_session_id INTEGER,
+            person_id INTEGER,
+            amount FLOAT,
+            FOREIGN KEY(round_id) REFERENCES rounds(id),
             FOREIGN KEY(game_session_id) REFERENCES game_sessions(id)
         );
     </string>

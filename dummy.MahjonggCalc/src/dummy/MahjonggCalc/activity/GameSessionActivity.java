@@ -1,7 +1,7 @@
 package dummy.MahjonggCalc.activity;
 
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.google.inject.Inject;
 import dummy.MahjonggCalc.R;
+import dummy.MahjonggCalc.db.model.GameSession;
 import dummy.MahjonggCalc.db.model.Person;
 import dummy.MahjonggCalc.db.model.Round;
+import dummy.MahjonggCalc.db.service.GameSessionService;
 import dummy.MahjonggCalc.db.service.PersonService;
+import dummy.MahjonggCalc.db.service.RoundService;
 import roboguice.activity.GuiceActivity;
 import roboguice.inject.InjectView;
 
@@ -32,11 +35,22 @@ public class GameSessionActivity extends GuiceActivity {
     @Inject
     private PersonService personService;
 
+    @Inject
+    private GameSessionService gameSessionService;
+
+    @Inject
+    private RoundService roundService;
+
+    private GameSession gameSession;
+    private Person[] players;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_session_activity);
+        gameSession = new GameSession();
+        gameSessionService.saveOrUpdate(gameSession);
     }
 
     @Override
@@ -44,11 +58,7 @@ public class GameSessionActivity extends GuiceActivity {
         Log.d(TAG, "onResume()");
         super.onResume();
 
-        List<Round> rounds = new ArrayList<Round>();
-        rounds.add(new Round());
-        rounds.add(new Round());
-        rounds.add(new Round());
-        rounds.add(new Round());
+        List<Round> rounds = roundService.findAllByGameSessionId(gameSession.getId());
         RoundListAdapter adapter = new RoundListAdapter(this,
                 R.layout.game_session_listitem, R.id.TextView01,
                 rounds.toArray(new Round[]{}));
@@ -58,6 +68,14 @@ public class GameSessionActivity extends GuiceActivity {
         setAvatar(R.id.player2, EXTRA_PARTICIPANT_2);
         setAvatar(R.id.player3, EXTRA_PARTICIPANT_3);
         setAvatar(R.id.player4, EXTRA_PARTICIPANT_4);
+
+        Intent intent = getIntent();
+        players = new Person[] {
+                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_1, 0)),
+                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_2, 0)),
+                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_3, 0)),
+                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_4, 0)),
+        };
     }
 
     private void setAvatar(int layout, String extra) {
@@ -94,9 +112,9 @@ public class GameSessionActivity extends GuiceActivity {
             }
 			
             View row=inflater.inflate(R.layout.game_session_listitem, null);
-            Round p = mItems[position];
+            Round round = mItems[position];
             TextView label=(TextView)row.findViewById(R.id.TextView01);
-            label.setText("First");
+            label.setText(round.getId().toString());
 
 
 //            if (UNKNOWN.equals(text)) {
@@ -109,7 +127,27 @@ public class GameSessionActivity extends GuiceActivity {
         }
     }
     
-    public void onSetPointsClick(View view) {
-    	Log.d(TAG, "onSetPointsClick");
+    public void onAddScoresClick(View view) {
+    	Log.d(TAG, "onAddScoresClick");
+        Intent intent = new Intent(this, AddScoreActivity.class);
+        intent.putExtra(AddScoreActivity.EXTRA_SESSION_ID, gameSession.getId());
+
+        long playerIds[] = new long[players.length];
+        for (int index = 0; index < players.length; index++) {
+            if (players[index] == null) {
+                playerIds[index] = 0;
+            } else {
+                playerIds[index] = players[index].getId();
+            }
+
+        }
+        intent.putExtra(AddScoreActivity.EXTRA_PLAYER_IDS, playerIds);
+
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 }

@@ -1,6 +1,5 @@
 package dummy.MahjonggCalc.activity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -10,16 +9,32 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import com.google.inject.Inject;
 import dummy.MahjonggCalc.R;
 import dummy.MahjonggCalc.RoundScoreCalculator;
+import dummy.MahjonggCalc.db.model.PlayerRound;
+import dummy.MahjonggCalc.db.model.Round;
+import dummy.MahjonggCalc.db.service.PlayerRoundService;
+import dummy.MahjonggCalc.db.service.RoundService;
+import roboguice.activity.GuiceActivity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class AddScoreActivity extends Activity {
+public class AddScoreActivity extends GuiceActivity {
+    public static final String EXTRA_SESSION_ID = "session";
+    public static final String EXTRA_PLAYER_IDS = "players";
+
 	private static final String TAG = "AddScoreActivity";
     private RoundScoreCalculator calculator = new RoundScoreCalculator();
     private TextView[][] labelArray;
+
+    @Inject
+    private PlayerRoundService playerRoundService;
+
+    @Inject
+    private RoundService roundService;
 
     /** Called when the activity is first created. */
     @Override
@@ -155,5 +170,35 @@ public class AddScoreActivity extends Activity {
                 labelArray[x][4].setTextColor(getResources().getColor(R.color.green));
             }
         }
+    }
+
+    public void onSaveClick(View view) {
+        Integer[][] result = calculator.getResult();
+        Long gameSessionId = getIntent().getLongExtra(AddScoreActivity.EXTRA_SESSION_ID, 0);
+        Round round = new Round();
+        round.setGameSessionId(gameSessionId);
+        round.setTime_stamp(new Date());
+        roundService.saveOrUpdate(round);
+
+        long[] players = (long[])getIntent().getLongArrayExtra(
+                AddScoreActivity.EXTRA_PLAYER_IDS);
+        int index = 0;
+        for (long playerId : players) {
+            PlayerRound playerRound = new PlayerRound();
+            playerRound.setPerson_id(playerId);
+            playerRound.setGame_session_id(gameSessionId);
+            playerRound.setRound_id(round.getId());
+
+            int sum = 0;
+            for (int x = 0; x < 4; x++) {
+                if (result[index][x] != null) {
+                    sum += result[index][x];
+                }
+            }
+            playerRound.setAmount(sum);
+            playerRoundService.saveOrUpdate(playerRound);
+        }
+
+        finish();
     }
 }

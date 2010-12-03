@@ -12,7 +12,6 @@ import android.util.Log;
 import com.google.inject.Inject;
 import dummy.MahjonggCalc.db.model.Person;
 import dummy.MahjonggCalc.db.service.PersonService;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.InputStream;
 import java.util.List;
@@ -31,17 +30,20 @@ public class PersonServiceImpl implements PersonService {
         Cursor c = activity.managedQuery(contactData, null, null, null, null);
         if (c == null) {
             Log.e(TAG, "c is null");
+            c.close();
             return null;
         }
 
         if (!c.moveToFirst()) {
             Log.e(TAG, "person not found");
+            c.close();
             return null;
         }
 
         Person person = new Person();
         person.setId(id);
         person.setName(c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)));
+        c.close();
 
         Uri uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, id);
         InputStream photoDataStream = ContactsContract.Contacts.openContactPhotoInputStream(activity.getContentResolver(), uri); // <-- always null
@@ -67,22 +69,22 @@ public class PersonServiceImpl implements PersonService {
     }
 
     public List<Person> list() {
-        throw new NotImplementedException();
+        throw new RuntimeException("not implemented");
     }
 
     public void save(Person obj) {
-        throw new NotImplementedException();
+        throw new RuntimeException("not implemented");
     }
 
     public void update(Person obj) {
-        throw new NotImplementedException();
+        throw new RuntimeException("not implemented");
     }
 
     public void saveOrUpdate(Person obj) {
-        throw new NotImplementedException();
+        throw new RuntimeException("not implemented");
     }
 
     public void delete(Person obj) {
-        throw new NotImplementedException();
+        throw new RuntimeException("not implemented");
     }
 }

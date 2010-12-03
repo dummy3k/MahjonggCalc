@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.inject.Inject;
 import dummy.MahjonggCalc.R;
+import dummy.MahjonggCalc.db.model.GameSession;
 import dummy.MahjonggCalc.db.model.Person;
 import dummy.MahjonggCalc.db.service.PersonService;
 import roboguice.activity.GuiceActivity;
