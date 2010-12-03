@@ -17,6 +17,7 @@
               android:layout_margin="2dp"
               android:text="John Doe"
               android:id="@+id/txtName1"
+              android:layout_gravity="clip_horizontal"
               />
 
 </LinearLayout>

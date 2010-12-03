@@ -1,4 +1,4 @@
-package dummy.MahjonggCalc;
+package dummy.MahjonggCalc.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import dummy.MahjonggCalc.R;
+import dummy.MahjonggCalc.RoundScoreCalculator;
 
 import java.util.ArrayList;
 import java.util.List;

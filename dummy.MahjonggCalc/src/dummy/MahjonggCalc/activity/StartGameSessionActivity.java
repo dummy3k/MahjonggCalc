@@ -1,4 +1,4 @@
-package dummy.MahjonggCalc;
+package dummy.MahjonggCalc.activity;
 
 import android.app.Activity;
 import android.content.ContentUris;
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewParent;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.inject.Inject;
+import dummy.MahjonggCalc.R;
 import dummy.MahjonggCalc.db.model.Person;
 import dummy.MahjonggCalc.db.service.PersonService;
 import roboguice.activity.GuiceActivity;
@@ -26,6 +28,7 @@ public class StartGameSessionActivity extends GuiceActivity {
     private Integer currentPlayer = null;
     private List<ImageView> imageViews;
     private List<TextView> textViews;
+    private Long participants[] = new Long[4];
 
     @Inject
     private PersonService personService;
@@ -64,7 +67,12 @@ public class StartGameSessionActivity extends GuiceActivity {
     }
 
     public void onStartGameClick(View view) {
-
+        Intent intent = new Intent(this, GameSessionActivity.class);
+        intent.putExtra(GameSessionActivity.EXTRA_PARTICIPANT_1, participants[0]);
+        intent.putExtra(GameSessionActivity.EXTRA_PARTICIPANT_2, participants[1]);
+        intent.putExtra(GameSessionActivity.EXTRA_PARTICIPANT_3, participants[2]);
+        intent.putExtra(GameSessionActivity.EXTRA_PARTICIPANT_4, participants[3]);
+        startActivity(intent);
     }
 
     public void onSelectPersonClick(View view) {
@@ -88,6 +96,7 @@ public class StartGameSessionActivity extends GuiceActivity {
                     Log.d(TAG, "Person: " + person.getName());
                     imageViews.get(currentPlayer).setImageBitmap(person.getImage());
                     textViews.get(currentPlayer).setText(person.getName());
+                    participants[currentPlayer] = person.getId();
                 }
                 break;
         }

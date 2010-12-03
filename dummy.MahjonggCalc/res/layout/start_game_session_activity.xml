@@ -28,4 +28,5 @@
             android:text="@string/start_game"
             android:onClick="onStartGameClick"
             />
+
 </LinearLayout>

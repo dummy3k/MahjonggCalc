@@ -18,4 +18,5 @@
     <string name="player3">Player 3</string>
     <string name="player4">Player 4</string>
     <string name="start_game">Start Game</string>
+    <string name="add_scores">Add Scores</string>
 </resources>
