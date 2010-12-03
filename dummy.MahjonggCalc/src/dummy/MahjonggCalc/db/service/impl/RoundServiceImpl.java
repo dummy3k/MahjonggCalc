@@ -3,13 +3,17 @@ package dummy.MahjonggCalc.db.service.impl;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import com.google.inject.Inject;
 import dummy.MahjonggCalc.db.model.PlayerRound;
 import dummy.MahjonggCalc.db.model.Round;
 import dummy.MahjonggCalc.db.service.PlayerRoundService;
 import dummy.MahjonggCalc.db.service.RoundService;
 
+import java.io.StringWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RoundServiceImpl extends AbstractServiceImpl<Round> implements RoundService {
 	@Inject private PlayerRoundService PlayerRoundService;
@@ -63,14 +67,13 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
 
     public List<Round> findAllByGameSessionId(Long id) {
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
+
         Cursor cursor = db.query(getTableName(), null,
                 "game_session_id = ?", new String[]{id.toString()},
                 null, null, null, null);
 
         List<Round> lst = _list(cursor);
-//        cursor.close();
         db.close();
-
         return lst;
 
     }

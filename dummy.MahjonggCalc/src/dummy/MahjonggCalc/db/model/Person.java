@@ -3,6 +3,7 @@ package dummy.MahjonggCalc.db.model;
 import android.graphics.Bitmap;
 
 public class Person implements Model {
+    public static final long ID_NOBODY = 0;
 	private Long id;
     private String name;
     private Bitmap image;

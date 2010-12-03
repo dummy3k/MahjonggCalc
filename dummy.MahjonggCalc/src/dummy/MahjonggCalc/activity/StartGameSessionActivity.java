@@ -3,6 +3,9 @@ package dummy.MahjonggCalc.activity;
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -29,7 +32,7 @@ public class StartGameSessionActivity extends GuiceActivity {
     private Integer currentPlayer = null;
     private List<ImageView> imageViews;
     private List<TextView> textViews;
-    private Long participants[] = new Long[4];
+    private long participants[] = null;
 
     @Inject
     private PersonService personService;
@@ -50,6 +53,55 @@ public class StartGameSessionActivity extends GuiceActivity {
         textViews.add((TextView) findViewById(R.id.player2).findViewById(R.id.txtName1));
         textViews.add((TextView) findViewById(R.id.player3).findViewById(R.id.txtName1));
         textViews.add((TextView) findViewById(R.id.player4).findViewById(R.id.txtName1));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume()");
+        if (participants == null) {
+            Log.d(TAG, "onResume(), participants == null");
+            participants = new long[4];
+            SharedPreferences preferences = getSharedPreferences(TAG, MODE_PRIVATE);
+            setPlayer(0, preferences.getLong("player1", Person.ID_NOBODY));
+            setPlayer(1, preferences.getLong("player2", Person.ID_NOBODY));
+            setPlayer(2, preferences.getLong("player3", Person.ID_NOBODY));
+            setPlayer(3, preferences.getLong("player4", Person.ID_NOBODY));
+        }
+
+    }
+
+    private void setPlayer(int player, Long id) {
+        Person person = personService.findById(id);
+        if (person == null) {
+            imageViews.get(player).setImageBitmap(
+                    BitmapFactory.decodeResource(getResources(),
+                            R.drawable.icon_round_question_mark));
+            textViews.get(player).setText(R.string.nobody);
+            participants[player] = Person.ID_NOBODY;
+        } else {
+            imageViews.get(player).setImageBitmap(person.getImage());
+            textViews.get(player).setText(person.getName());
+            participants[player] = id;
+        }
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause()");
+        savePreferences();
+    }
+
+    private void savePreferences() {
+        SharedPreferences.Editor editor = getSharedPreferences(TAG, MODE_PRIVATE).edit();
+        Log.d(TAG, "savePreferences, player1: " + participants[0]);
+        editor.putLong("player1", participants[0]);
+        editor.putLong("player2", participants[1]);
+        editor.putLong("player3", participants[2]);
+        editor.putLong("player4", participants[3]);
+        editor.commit();
     }
 
     private int playerByView(View view) {
@@ -84,7 +136,6 @@ public class StartGameSessionActivity extends GuiceActivity {
         personService.startPickActivityForResult(REQUEST_PICK_CONTACT);
     }
 
-
     @Override
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
@@ -95,9 +146,8 @@ public class StartGameSessionActivity extends GuiceActivity {
                 if (resultCode == Activity.RESULT_OK) {
                     Person person = personService.fromActivityResult(data);
                     Log.d(TAG, "Person: " + person.getName());
-                    imageViews.get(currentPlayer).setImageBitmap(person.getImage());
-                    textViews.get(currentPlayer).setText(person.getName());
-                    participants[currentPlayer] = person.getId();
+                    setPlayer(currentPlayer, person.getId());
+                    savePreferences();
                 }
                 break;
         }
