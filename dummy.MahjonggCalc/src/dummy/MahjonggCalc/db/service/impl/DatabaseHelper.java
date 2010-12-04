@@ -32,7 +32,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		
 		if (oldVersion < 1) {
 			Log.i(TAG, "update to version 1");
-			db.execSQL(res.getString(R.string.create_table_game_sessions));
 			db.execSQL(res.getString(R.string.create_table_rounds));
 			db.execSQL(res.getString(R.string.create_table_player_rounds));
 		}

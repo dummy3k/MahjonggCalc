@@ -14,9 +14,11 @@ public class PlayerRoundServiceImpl extends AbstractServiceImpl<PlayerRound> imp
 		PlayerRound obj = new PlayerRound();
 		obj.setId(cursor.getLong(cursor.getColumnIndex("id")));
         obj.setAmount(cursor.getInt(cursor.getColumnIndex("amount")));
-        obj.setGameSessionId(cursor.getLong(cursor.getColumnIndex("game_session_id")));
         obj.setPerson_id(cursor.getLong(cursor.getColumnIndex("person_id")));
         obj.setRoundId(cursor.getLong(cursor.getColumnIndex("round_id")));
+        obj.setWon(cursor.getInt(cursor.getColumnIndex("won")) == 1);
+        obj.setWind(PlayerRound.windEnum.valueOf(
+                cursor.getString(cursor.getColumnIndex("wind"))));
 		return obj;
 	}
 
@@ -25,9 +27,10 @@ public class PlayerRoundServiceImpl extends AbstractServiceImpl<PlayerRound> imp
 		ContentValues values = new ContentValues();
 		values.put("id", obj.getId());
 		values.put("amount", obj.getAmount());
-		values.put("game_session_id", obj.getGameSessionId());
 		values.put("person_id", obj.getPersonId());
 		values.put("round_id", obj.getRoundId());
+		values.put("won", obj.getWon() ? 1 : 0);
+        values.put("wind", obj.getWind().toString());
 		return values;
 	}
 

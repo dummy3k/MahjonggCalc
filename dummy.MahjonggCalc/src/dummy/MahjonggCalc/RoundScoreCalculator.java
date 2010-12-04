@@ -20,8 +20,12 @@ public class RoundScoreCalculator {
 	public void setWinner(Integer player) {
 		winner = player;
 	}
-	
-	public Integer[][] getResult() {
+
+    public Integer getWinner() {
+        return winner;
+    }
+
+    public Integer[][] getResult() {
 		Integer retval [][] = new Integer[][] {
 				{null, null, null, null},
 				{null, null, null, null},

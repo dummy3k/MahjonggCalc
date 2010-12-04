@@ -1,15 +1,19 @@
 package dummy.MahjonggCalc.db.model;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.IntArrayData;
-
-import java.util.Date;
-
 public class PlayerRound implements Model {
 	private Long id;
-    private Long game_session_id;
-    private Long round_id;
+    private Long roundId;
     private Long person_id;
     private Integer amount;
+    private Boolean won;
+
+    public enum windEnum {
+        EAST,
+        SOUTH,
+        WEST,
+        NORTH
+    }
+    private windEnum wind;
 
 	@Override
 	public String toString() {
@@ -24,20 +28,12 @@ public class PlayerRound implements Model {
 		this.id = id;
 	}
 
-    public Long getGameSessionId() {
-        return game_session_id;
-    }
-
-    public void setGameSessionId(Long game_session_id) {
-        this.game_session_id = game_session_id;
-    }
-
     public Long getRoundId() {
-        return round_id;
+        return roundId;
     }
 
     public void setRoundId(Long round_id) {
-        this.round_id = round_id;
+        this.roundId = round_id;
     }
 
     public Long getPersonId() {
@@ -54,5 +50,21 @@ public class PlayerRound implements Model {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public Boolean getWon() {
+        return won;
+    }
+
+    public void setWon(Boolean won) {
+        this.won = won;
+    }
+
+    public windEnum getWind() {
+        return wind;
+    }
+
+    public void setWind(windEnum wind) {
+        this.wind = wind;
     }
 }

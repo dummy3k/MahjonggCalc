@@ -7,7 +7,6 @@ import java.util.List;
 public class Round implements Model {
 	private Long id;
 	private List<PlayerRound> players;
-    private Long game_session_id;
     private Date time_stamp;
 
     public Round() {
@@ -42,14 +41,6 @@ public class Round implements Model {
 
     public void setPlayers(List<PlayerRound> players) {
         this.players = players;
-    }
-
-    public Long getGameSessionId() {
-        return game_session_id;
-    }
-
-    public void setGameSessionId(Long game_session_id) {
-        this.game_session_id = game_session_id;
     }
 
     public Date getTime_stamp() {

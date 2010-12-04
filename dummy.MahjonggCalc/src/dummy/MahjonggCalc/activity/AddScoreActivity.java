@@ -25,7 +25,6 @@ import java.util.Date;
 import java.util.List;
 
 public class AddScoreActivity extends GuiceActivity {
-    public static final String EXTRA_SESSION_ID = "session";
     public static final String EXTRA_PLAYER_IDS = "players";
 
 	private static final String TAG = "AddScoreActivity";
@@ -183,15 +182,13 @@ public class AddScoreActivity extends GuiceActivity {
                     ActivityTools.setLabel(labelArray[x][y], result[x][y]);
                 }
             }
-            ActivityTools.setLabel(labelArray[x][4], result[x][4]);
+            ActivityTools.setLabel(labelArray[x][4], sum);
         }
     }
 
     public void onSaveClick(View view) {
         Integer[][] result = calculator.getResult();
-        Long gameSessionId = getIntent().getLongExtra(AddScoreActivity.EXTRA_SESSION_ID, 0);
         Round round = new Round();
-        round.setGameSessionId(gameSessionId);
         round.setTime_stamp(new Date());
         roundService.saveOrUpdate(round);
 
@@ -201,8 +198,27 @@ public class AddScoreActivity extends GuiceActivity {
         for (long playerId : players) {
             PlayerRound playerRound = new PlayerRound();
             playerRound.setPerson_id(playerId);
-            playerRound.setGameSessionId(gameSessionId);
             playerRound.setRoundId(round.getId());
+            if (calculator == null) Log.w(TAG, "calculator is null");
+            if (calculator != null && calculator.getWinner() != null) {
+                playerRound.setWon(calculator.getWinner() == index);
+
+                int wind = (index + 4 - calculator.getEastPlayer()) % 4;
+                switch (wind) {
+                    case 0:
+                        playerRound.setWind(PlayerRound.windEnum.EAST);
+                        break;
+                    case 1:
+                        playerRound.setWind(PlayerRound.windEnum.SOUTH);
+                        break;
+                    case 2:
+                        playerRound.setWind(PlayerRound.windEnum.WEST);
+                        break;
+                    case 3:
+                        playerRound.setWind(PlayerRound.windEnum.NORTH);
+                        break;
+                }
+            }
 
             int sum = 0;
             for (int x = 0; x < 4; x++) {

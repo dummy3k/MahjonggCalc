@@ -1,7 +1,6 @@
 package dummy.MahjonggCalc;
 
 import dummy.MahjonggCalc.db.service.impl.DatabaseHelper;
-import dummy.MahjonggCalc.db.service.GameSessionService;
 import dummy.MahjonggCalc.db.service.PersonService;
 import dummy.MahjonggCalc.db.service.PlayerRoundService;
 import dummy.MahjonggCalc.db.service.RoundService;
@@ -19,7 +18,6 @@ public class Module extends AbstractAndroidModule {
     @Override
     protected void configure() {
         bind(PersonService.class).to(PersonServiceImpl.class);
-        bind(GameSessionService.class).to(GameSessionServiceImpl.class);
         bind(PlayerRoundService.class).to(PlayerRoundServiceImpl.class);
         bind(RoundService.class).to(RoundServiceImpl.class);
 

@@ -27,7 +27,6 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
 	protected Round read(Cursor cursor) {
 		Round obj = new Round();
 		obj.setId(cursor.getLong(cursor.getColumnIndex("id")));
-		obj.setGameSessionId(cursor.getLong(cursor.getColumnIndex("game_session_id")));
 		obj.setTime_stamp(parseDate(cursor, "time_stamp"));
 
 		List<PlayerRound> cells = PlayerRoundService.findAllByRoundId(obj.getId());
@@ -60,7 +59,6 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
 	protected ContentValues write(Round obj) {
 		ContentValues values = new ContentValues();
 		values.put("id", obj.getId());
-		values.put("game_session_id", obj.getGameSessionId());
 		values.put("time_stamp", formatDate(obj.getTime_stamp()));
 		return values;
 	}

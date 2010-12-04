@@ -10,10 +10,8 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.google.inject.Inject;
 import dummy.MahjonggCalc.R;
-import dummy.MahjonggCalc.db.model.GameSession;
 import dummy.MahjonggCalc.db.model.Person;
 import dummy.MahjonggCalc.db.model.Round;
-import dummy.MahjonggCalc.db.service.GameSessionService;
 import dummy.MahjonggCalc.db.service.PersonService;
 import dummy.MahjonggCalc.db.service.RoundService;
 import roboguice.activity.GuiceActivity;
@@ -36,12 +34,8 @@ public class GameSessionActivity extends GuiceActivity {
     private PersonService personService;
 
     @Inject
-    private GameSessionService gameSessionService;
-
-    @Inject
     private RoundService roundService;
 
-    private GameSession gameSession;
     private Person[] players;
     private long[] personIds;
 
@@ -50,8 +44,6 @@ public class GameSessionActivity extends GuiceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_session_activity);
-        gameSession = new GameSession();
-        gameSessionService.saveOrUpdate(gameSession);
     }
 
     @Override
@@ -156,7 +148,6 @@ public class GameSessionActivity extends GuiceActivity {
     public void onAddScoresClick(View view) {
     	Log.d(TAG, "onAddScoresClick");
         Intent intent = new Intent(this, AddScoreActivity.class);
-        intent.putExtra(AddScoreActivity.EXTRA_SESSION_ID, gameSession.getId());
 
         long playerIds[] = new long[players.length];
         for (int index = 0; index < players.length; index++) {
