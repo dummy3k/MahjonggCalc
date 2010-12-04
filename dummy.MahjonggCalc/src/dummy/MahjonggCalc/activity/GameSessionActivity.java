@@ -72,6 +72,27 @@ public class GameSessionActivity extends GuiceActivity {
                 rounds.toArray(new Round[]{}));
         list.setAdapter(adapter);
 
+        int sums[] = new int[4];
+        for (Round item : rounds) {
+            sums[0] += item.findPlayerRoundByPlayerId(personIds[0]).getAmount();
+            sums[1] += item.findPlayerRoundByPlayerId(personIds[1]).getAmount();
+            sums[2] += item.findPlayerRoundByPlayerId(personIds[2]).getAmount();
+            sums[3] += item.findPlayerRoundByPlayerId(personIds[3]).getAmount();
+        }
+        View summaryView = findViewById(R.id.summaryListItem);
+        ((TextView) summaryView.findViewById(
+                R.id.TextView01)).setText(
+                Integer.toString(sums[0]));
+        ((TextView) summaryView.findViewById(
+                R.id.TextView02)).setText(
+                Integer.toString(sums[1]));
+        ((TextView) summaryView.findViewById(
+                R.id.TextView03)).setText(
+                Integer.toString(sums[2]));
+        ((TextView) summaryView.findViewById(
+                R.id.TextView04)).setText(
+                Integer.toString(sums[3]));
+
         setAvatar(R.id.player1, EXTRA_PARTICIPANT_1);
         setAvatar(R.id.player2, EXTRA_PARTICIPANT_2);
         setAvatar(R.id.player3, EXTRA_PARTICIPANT_3);
@@ -105,7 +126,6 @@ public class GameSessionActivity extends GuiceActivity {
                                 int textViewResourceId, Round[] objects) {
 			
             super(context, resource, textViewResourceId, objects);
-//            super(context, resource);
             mContext = context;
             mItems = objects;
         }
@@ -132,16 +152,6 @@ public class GameSessionActivity extends GuiceActivity {
 
             TextView label4=(TextView)row.findViewById(R.id.TextView04);
             label4.setText(round.findPlayerRoundByPlayerId(personIds[3]).getAmount().toString());
-
-//            Long person0id = round.findPlayerRoundByPlayerId(personIds[0]).getId();
-//            Long person1id = round.findPlayerRoundByPlayerId(personIds[1]).getId();
-//
-//            Log.d(TAG, String.format("row %s, person0id %s", position, personIds[0]));
-//            Log.d(TAG, String.format("row %s, person1id %s", position, personIds[1]));
-//            Log.d(TAG, String.format("row %s, person0id %s", position, person0id));
-//            Log.d(TAG, String.format("row %s, person1id %s", position, person1id));
-//            label3.setText("333");
-//            label4.setText("444");
             return row;
         }
     }

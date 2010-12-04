@@ -19,25 +19,25 @@
         >
 
         <include android:id="@+id/player1"
-                 android:layout_width="wrap_content"
+                 android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
                  />
         <include android:id="@+id/player2"
-                 android:layout_width="wrap_content"
+                 android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
                  />
         <include android:id="@+id/player3"
-                 android:layout_width="wrap_content"
+                 android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
                  />
         <include android:id="@+id/player4"
-                 android:layout_width="wrap_content"
+                 android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
@@ -49,6 +49,19 @@
     <ListView android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:id="@+id/ListView01"
+              android:layout_weight="1"
               />
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="@color/white"
+        ></View>
+
+    <include layout="@layout/game_session_listitem"
+            android:id="@+id/summaryListItem"
+            />
+
 
 </LinearLayout>
