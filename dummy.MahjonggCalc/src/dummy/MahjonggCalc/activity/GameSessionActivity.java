@@ -80,18 +80,14 @@ public class GameSessionActivity extends GuiceActivity {
             sums[3] += item.findPlayerRoundByPlayerId(personIds[3]).getAmount();
         }
         View summaryView = findViewById(R.id.summaryListItem);
-        ((TextView) summaryView.findViewById(
-                R.id.TextView01)).setText(
-                Integer.toString(sums[0]));
-        ((TextView) summaryView.findViewById(
-                R.id.TextView02)).setText(
-                Integer.toString(sums[1]));
-        ((TextView) summaryView.findViewById(
-                R.id.TextView03)).setText(
-                Integer.toString(sums[2]));
-        ((TextView) summaryView.findViewById(
-                R.id.TextView04)).setText(
-                Integer.toString(sums[3]));
+        ActivityTools.setLabel((TextView)summaryView.findViewById(
+                R.id.TextView01), sums[0]);
+        ActivityTools.setLabel((TextView)summaryView.findViewById(
+                R.id.TextView02), sums[1]);
+        ActivityTools.setLabel((TextView)summaryView.findViewById(
+                R.id.TextView03), sums[2]);
+        ActivityTools.setLabel((TextView)summaryView.findViewById(
+                R.id.TextView04), sums[3]);
 
         setAvatar(R.id.player1, EXTRA_PARTICIPANT_1);
         setAvatar(R.id.player2, EXTRA_PARTICIPANT_2);
@@ -141,17 +137,18 @@ public class GameSessionActivity extends GuiceActivity {
             View row=inflater.inflate(R.layout.game_session_listitem, null);
             Round round = mItems[position];
 
-            TextView label1=(TextView)row.findViewById(R.id.TextView01);
-            label1.setText(round.findPlayerRoundByPlayerId(personIds[0]).getAmount().toString());
+            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView01),
+                    round.findPlayerRoundByPlayerId(personIds[0]).getAmount());
 
-            TextView label2=(TextView)row.findViewById(R.id.TextView02);
-            label2.setText(round.findPlayerRoundByPlayerId(personIds[1]).getAmount().toString());
+            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView02),
+                    round.findPlayerRoundByPlayerId(personIds[1]).getAmount());
 
-            TextView label3=(TextView)row.findViewById(R.id.TextView03);
-            label3.setText(round.findPlayerRoundByPlayerId(personIds[2]).getAmount().toString());
+            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView03),
+                    round.findPlayerRoundByPlayerId(personIds[2]).getAmount());
 
-            TextView label4=(TextView)row.findViewById(R.id.TextView04);
-            label4.setText(round.findPlayerRoundByPlayerId(personIds[3]).getAmount().toString());
+            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView04),
+                    round.findPlayerRoundByPlayerId(personIds[3]).getAmount());
+
             return row;
         }
     }

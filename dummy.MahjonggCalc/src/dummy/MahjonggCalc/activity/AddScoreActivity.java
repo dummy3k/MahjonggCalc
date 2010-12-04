@@ -180,20 +180,10 @@ public class AddScoreActivity extends GuiceActivity {
                     labelArray[x][y].setText("");
                 } else {
                     sum += result[x][y];
-                    labelArray[x][y].setText(result[x][y].toString());
-                    if (result[x][y] < 0) {
-                        labelArray[x][y].setTextColor(getResources().getColor(R.color.red));
-                    } else {
-                        labelArray[x][y].setTextColor(getResources().getColor(R.color.green));
-                    }
+                    ActivityTools.setLabel(labelArray[x][y], result[x][y]);
                 }
             }
-            labelArray[x][4].setText(sum.toString());
-            if (sum < 0) {
-                labelArray[x][4].setTextColor(getResources().getColor(R.color.red));
-            } else {
-                labelArray[x][4].setTextColor(getResources().getColor(R.color.green));
-            }
+            ActivityTools.setLabel(labelArray[x][4], result[x][4]);
         }
     }
 
