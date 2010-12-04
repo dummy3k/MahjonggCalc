@@ -43,6 +43,7 @@ public class GameSessionActivity extends GuiceActivity {
 
     private GameSession gameSession;
     private Person[] players;
+    private long[] personIds;
 
     /** Called when the activity is first created. */
     @Override
@@ -58,7 +59,14 @@ public class GameSessionActivity extends GuiceActivity {
         Log.d(TAG, "onResume()");
         super.onResume();
 
-        List<Round> rounds = roundService.findAllByGameSessionId(gameSession.getId());
+        Intent intent = getIntent();
+        personIds = new long[] {
+                intent.getLongExtra(EXTRA_PARTICIPANT_1, Person.ID_NOBODY),
+                intent.getLongExtra(EXTRA_PARTICIPANT_2, Person.ID_NOBODY),
+                intent.getLongExtra(EXTRA_PARTICIPANT_3, Person.ID_NOBODY),
+                intent.getLongExtra(EXTRA_PARTICIPANT_4, Person.ID_NOBODY),
+        };
+        List<Round> rounds = roundService.findAllByPlayers(personIds, getResources());
         RoundListAdapter adapter = new RoundListAdapter(this,
                 R.layout.game_session_listitem, R.id.TextView01,
                 rounds.toArray(new Round[]{}));
@@ -69,12 +77,11 @@ public class GameSessionActivity extends GuiceActivity {
         setAvatar(R.id.player3, EXTRA_PARTICIPANT_3);
         setAvatar(R.id.player4, EXTRA_PARTICIPANT_4);
 
-        Intent intent = getIntent();
         players = new Person[] {
-                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_1, 0)),
-                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_2, 0)),
-                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_3, 0)),
-                personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_4, 0)),
+            personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_1, Person.ID_NOBODY)),
+            personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_2, Person.ID_NOBODY)),
+            personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_3, Person.ID_NOBODY)),
+            personService.findById(intent.getLongExtra(EXTRA_PARTICIPANT_4, Person.ID_NOBODY)),
         };
     }
 
@@ -113,16 +120,28 @@ public class GameSessionActivity extends GuiceActivity {
 			
             View row=inflater.inflate(R.layout.game_session_listitem, null);
             Round round = mItems[position];
-            TextView label=(TextView)row.findViewById(R.id.TextView01);
-            label.setText(round.getId().toString());
 
+            TextView label1=(TextView)row.findViewById(R.id.TextView01);
+            label1.setText(round.findPlayerRoundByPlayerId(personIds[0]).getAmount().toString());
 
-//            if (UNKNOWN.equals(text)) {
-//                label.setTextColor(mContext.getResources().getColor(R.color.white));
-//            } else {
-//                label.setTextColor(mContext.getResources().getColor(R.color.green));
-//            }
+            TextView label2=(TextView)row.findViewById(R.id.TextView02);
+            label2.setText(round.findPlayerRoundByPlayerId(personIds[1]).getAmount().toString());
 
+            TextView label3=(TextView)row.findViewById(R.id.TextView03);
+            label3.setText(round.findPlayerRoundByPlayerId(personIds[2]).getAmount().toString());
+
+            TextView label4=(TextView)row.findViewById(R.id.TextView04);
+            label4.setText(round.findPlayerRoundByPlayerId(personIds[3]).getAmount().toString());
+
+//            Long person0id = round.findPlayerRoundByPlayerId(personIds[0]).getId();
+//            Long person1id = round.findPlayerRoundByPlayerId(personIds[1]).getId();
+//
+//            Log.d(TAG, String.format("row %s, person0id %s", position, personIds[0]));
+//            Log.d(TAG, String.format("row %s, person1id %s", position, personIds[1]));
+//            Log.d(TAG, String.format("row %s, person0id %s", position, person0id));
+//            Log.d(TAG, String.format("row %s, person1id %s", position, person1id));
+//            label3.setText("333");
+//            label4.setText("444");
             return row;
         }
     }

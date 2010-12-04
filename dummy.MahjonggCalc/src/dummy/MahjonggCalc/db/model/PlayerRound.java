@@ -28,7 +28,7 @@ public class PlayerRound implements Model {
         return game_session_id;
     }
 
-    public void setGame_session_id(Long game_session_id) {
+    public void setGameSessionId(Long game_session_id) {
         this.game_session_id = game_session_id;
     }
 
@@ -36,7 +36,7 @@ public class PlayerRound implements Model {
         return round_id;
     }
 
-    public void setRound_id(Long round_id) {
+    public void setRoundId(Long round_id) {
         this.round_id = round_id;
     }
 

@@ -7,6 +7,7 @@
 
 <TableLayout android:id="@+id/TableLayout01" android:layout_width="fill_parent" android:layout_height="wrap_content"
 	android:stretchColumns="2"
+    android:shrinkColumns="2"
 	>
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -21,8 +22,13 @@
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/east"
 			android:layout_margin="5dp" android:layout_gravity="center_vertical"/>
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Player 1"
-			android:layout_column="2" android:layout_margin="5dp" android:onClick="onLabelClick" android:layout_gravity="center_vertical"/>
+		<TextView android:id="@+id/lblPlayerName1_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Player 1"
+			      android:layout_column="2"
+                  android:layout_margin="5dp"
+                  android:onClick="onLabelClick"
+                  android:layout_gravity="center_vertical"
+                />
 		<TextView android:id="@+id/lblPoints1"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -37,9 +43,14 @@
     </TableRow>
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="@string/south" android:layout_gravity="center_vertical"/>
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Player 1"
-			android:layout_column="2" android:layout_margin="5dp" android:onClick="onLabelClick" android:layout_gravity="center_vertical"/>
-		
+        <TextView android:id="@+id/lblPlayerName2_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Player 1"
+                  android:layout_column="2"
+                  android:layout_margin="5dp"
+                  android:onClick="onLabelClick"
+                  android:layout_gravity="center_vertical"
+                />
+
         <TextView android:id="@+id/lblPoints2"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -54,9 +65,13 @@
     </TableRow>
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="@string/west" android:layout_gravity="center_vertical"/>
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Player 1"
-			android:layout_column="2" android:layout_margin="5dp" android:onClick="onLabelClick" android:layout_gravity="center_vertical"/>
-		
+        <TextView android:id="@+id/lblPlayerName3_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Player 1"
+                  android:layout_column="2"
+                  android:layout_margin="5dp"
+                  android:onClick="onLabelClick"
+                  android:layout_gravity="center_vertical"
+                />
         <TextView android:id="@+id/lblPoints3"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -71,9 +86,13 @@
     </TableRow>
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="@string/north" android:layout_gravity="center_vertical"/>
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Player 1"
-			android:layout_column="2" android:layout_margin="5dp" android:onClick="onLabelClick" android:layout_gravity="center_vertical"/>
-		
+        <TextView android:id="@+id/lblPlayerName4_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="Player 1"
+                  android:layout_column="2"
+                  android:layout_margin="5dp"
+                  android:onClick="onLabelClick"
+                  android:layout_gravity="center_vertical"
+                />
         <TextView android:id="@+id/lblPoints4"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"

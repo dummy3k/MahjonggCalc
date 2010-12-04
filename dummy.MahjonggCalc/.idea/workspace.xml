@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="WARN" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="GameSessionActivity" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d5e8e28-27d1-4e1b-bc6d-322bf57606fc" name="Default" comment="" />
@@ -62,55 +63,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="GameSessionActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="61" selection-start="4376" selection-end="4376" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StartGameSessionActivity.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/StartGameSessionActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="77" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.23391813">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="start_game_session_activity.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/start_game_session_activity.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="total_score_activity.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/total_score_activity.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game_session_listitem.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/game_session_listitem.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="51" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RoundServiceImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/RoundServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0">
+            <state line="127" column="31" selection-start="4271" selection-end="4271" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameSessionActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="144" column="0" selection-start="5363" selection-end="5962" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddScoreActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/AddScoreActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="217" column="47" selection-start="8252" selection-end="8252" vertical-scroll-proportion="0.72861356">
+              <folding>
+                <element signature="method#onCreate#0;class#AddScoreActivity#0" expanded="false" />
+                <element signature="method#onSetPointsClick#0;class#AddScoreActivity#0" expanded="false" />
+                <element signature="method#onWinnerSelect#0;class#AddScoreActivity#0" expanded="false" />
+                <element signature="method#refreshResult#0;class#AddScoreActivity#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sql.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/sql.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="30" selection-start="988" selection-end="988" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Round.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/Round.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="39" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -130,22 +127,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/RoundService.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/Module.java" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/GameSession.java" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/AbstractServiceImpl.java" />
-        <option value="$PROJECT_DIR$/res/values/sql.xml" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/PlayerRound.java" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/GameSessionServiceImpl.java" />
-        <option value="$PROJECT_DIR$/res/layout/add_score_activity.xml" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/PlayerRoundServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/PersonServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/AddScoreActivity.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/RoundServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/Person.java" />
         <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/StartGameSessionActivity.java" />
+        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/RoundService.java" />
+        <option value="$PROJECT_DIR$/res/layout/add_score_activity.xml" />
+        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/AddScoreActivity.java" />
+        <option value="$PROJECT_DIR$/res/values/sql.xml" />
+        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/RoundServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/Round.java" />
+        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java" />
       </list>
     </option>
   </component>
@@ -250,6 +247,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dummy.MahjonggCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dummy.MahjonggCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MahjonggCalc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -592,7 +619,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1022" height="740" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -606,12 +633,12 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31088084" sideWeight="0.6739865" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3260135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24870466" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3260135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8344595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="342" y="36" width="682" height="495" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24870466" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39966273" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -651,33 +678,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/DatabaseHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="64" selection-start="423" selection-end="438" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/add_score_activity.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="39" selection-start="8877" selection-end="8877" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/PlayerRoundServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="23" selection-start="1673" selection-end="1673" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/AbstractServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="69" selection-start="619" selection-end="619" vertical-scroll-proportion="0.12623274" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/GameSessionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="31" selection-start="468" selection-end="468" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/PersonServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="40" selection-start="515" selection-end="515" vertical-scroll-proportion="0.0">
@@ -685,23 +685,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/AddScoreActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="173" column="46" selection-start="6576" selection-end="6576" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/bin/android-sdk-linux_x86/platforms/android-8/android.jar!/android/database/sqlite/SQLiteDatabase.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="84" column="35" selection-start="4649" selection-end="4649" vertical-scroll-proportion="2.3669202">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/RoundServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -727,20 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/game_session_listitem.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="51" selection-start="90" selection-end="90" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="61" selection-start="4376" selection-end="4376" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/Person.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="45" selection-start="196" selection-end="196" vertical-scroll-proportion="0.19961977">
@@ -750,8 +722,76 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/StartGameSessionActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="77" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.23391813">
+        <state line="36" column="61" selection-start="1209" selection-end="1209" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/RoundService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="43" selection-start="324" selection-end="345" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/add_score_activity.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="44" selection-start="146" selection-end="146" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/AbstractServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="0" selection-start="1221" selection-end="1505" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/game_session_listitem.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="51" selection-start="90" selection-end="90" vertical-scroll-proportion="0.027522936">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/Round.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="39" selection-start="641" selection-end="641" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/sql.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="30" selection-start="988" selection-end="988" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/RoundServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="127" column="31" selection-start="4271" selection-end="4271" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="0" selection-start="5363" selection-end="5962" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/AddScoreActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="217" column="47" selection-start="8252" selection-end="8252" vertical-scroll-proportion="0.72861356">
+          <folding>
+            <element signature="method#onCreate#0;class#AddScoreActivity#0" expanded="false" />
+            <element signature="method#onSetPointsClick#0;class#AddScoreActivity#0" expanded="false" />
+            <element signature="method#onWinnerSelect#0;class#AddScoreActivity#0" expanded="false" />
+            <element signature="method#refreshResult#0;class#AddScoreActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

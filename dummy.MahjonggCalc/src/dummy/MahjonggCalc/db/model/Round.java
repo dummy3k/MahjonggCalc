@@ -27,6 +27,15 @@ public class Round implements Model {
 		this.id = id;
 	}
 
+    public PlayerRound findPlayerRoundByPlayerId(long id) {
+        for (PlayerRound item : players) {
+            if (item.getId().equals(id)) {
+                return item;
+            }
+        }
+        throw new RuntimeException("player not found");
+    }
+
     public List<PlayerRound> getPlayers() {
         return players;
     }

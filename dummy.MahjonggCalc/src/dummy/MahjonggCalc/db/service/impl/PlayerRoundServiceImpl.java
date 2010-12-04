@@ -14,9 +14,9 @@ public class PlayerRoundServiceImpl extends AbstractServiceImpl<PlayerRound> imp
 		PlayerRound obj = new PlayerRound();
 		obj.setId(cursor.getLong(cursor.getColumnIndex("id")));
         obj.setAmount(cursor.getInt(cursor.getColumnIndex("amount")));
-        obj.setGame_session_id(cursor.getLong(cursor.getColumnIndex("game_session_id")));
+        obj.setGameSessionId(cursor.getLong(cursor.getColumnIndex("game_session_id")));
         obj.setPerson_id(cursor.getLong(cursor.getColumnIndex("person_id")));
-        obj.setRound_id(cursor.getLong(cursor.getColumnIndex("round_id")));
+        obj.setRoundId(cursor.getLong(cursor.getColumnIndex("round_id")));
 		return obj;
 	}
 

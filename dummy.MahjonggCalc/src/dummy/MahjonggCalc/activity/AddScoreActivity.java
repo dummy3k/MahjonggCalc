@@ -12,8 +12,10 @@ import android.widget.TextView;
 import com.google.inject.Inject;
 import dummy.MahjonggCalc.R;
 import dummy.MahjonggCalc.RoundScoreCalculator;
+import dummy.MahjonggCalc.db.model.Person;
 import dummy.MahjonggCalc.db.model.PlayerRound;
 import dummy.MahjonggCalc.db.model.Round;
+import dummy.MahjonggCalc.db.service.PersonService;
 import dummy.MahjonggCalc.db.service.PlayerRoundService;
 import dummy.MahjonggCalc.db.service.RoundService;
 import roboguice.activity.GuiceActivity;
@@ -35,6 +37,9 @@ public class AddScoreActivity extends GuiceActivity {
 
     @Inject
     private RoundService roundService;
+
+    @Inject
+    private PersonService personService;
 
     /** Called when the activity is first created. */
     @Override
@@ -73,6 +78,26 @@ public class AddScoreActivity extends GuiceActivity {
                 }
         };
         refreshResult();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        long[] players = (long[])getIntent().getLongArrayExtra(
+                AddScoreActivity.EXTRA_PLAYER_IDS);
+
+        TextView[][] labels = new TextView[][] {
+                {(TextView)findViewById(R.id.lblPlayerName1_1)},
+                {(TextView)findViewById(R.id.lblPlayerName2_1)},
+                {(TextView)findViewById(R.id.lblPlayerName3_1)},
+                {(TextView)findViewById(R.id.lblPlayerName4_1)}
+        };
+
+        for (int index = 0; index < players.length; index++) {
+            Person person = personService.findById(players[index]);
+            labels[index][0].setText(person.getName());
+        }
+
     }
 
     public void onSetPointsClick(View view) {
@@ -186,8 +211,8 @@ public class AddScoreActivity extends GuiceActivity {
         for (long playerId : players) {
             PlayerRound playerRound = new PlayerRound();
             playerRound.setPerson_id(playerId);
-            playerRound.setGame_session_id(gameSessionId);
-            playerRound.setRound_id(round.getId());
+            playerRound.setGameSessionId(gameSessionId);
+            playerRound.setRoundId(round.getId());
 
             int sum = 0;
             for (int x = 0; x < 4; x++) {
@@ -197,6 +222,7 @@ public class AddScoreActivity extends GuiceActivity {
             }
             playerRound.setAmount(sum);
             playerRoundService.saveOrUpdate(playerRound);
+            index++;
         }
 
         finish();
