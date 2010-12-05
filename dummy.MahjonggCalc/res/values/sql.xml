@@ -3,7 +3,8 @@
     <string name="create_table_rounds">
         CREATE TABLE rounds (
             id INTEGER PRIMARY KEY,
-            time_stamp DATE
+            time_stamp DATE,
+            winner INTEGER
         );
     </string>
     <string name="create_table_player_rounds">
@@ -12,17 +13,16 @@
             round_id INTEGER,
             person_id INTEGER,
             amount FLOAT,
-            mahjongg BIT,
             wind INTEGER,
             FOREIGN KEY(round_id) REFERENCES rounds(id)
         );
     </string>
     <string name="select_rounds_by_players">
         SELECT rounds.id,
-            pr1.person_id, pr1.amount,
-            pr2.person_id, pr2.amount,
-            pr3.person_id, pr3.amount,
-            pr4.person_id, pr4.amount
+            pr1.person_id, pr1.amount, pr1.wind,
+            pr2.person_id, pr2.amount, pr2.wind,
+            pr3.person_id, pr3.amount, pr3.wind,
+            pr4.person_id, pr4.amount, pr4.wind
         FROM rounds
             LEFT JOIN player_rounds pr1 ON (pr1.round_id = rounds.id)
             LEFT JOIN player_rounds pr2 ON (pr2.round_id = rounds.id)

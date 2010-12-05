@@ -2,6 +2,7 @@ package dummy.MahjonggCalc.db.service;
 
 import android.content.Context;
 import android.content.res.Resources;
+import dummy.MahjonggCalc.db.model.PlayerRound;
 import dummy.MahjonggCalc.db.model.Round;
 
 import java.util.List;

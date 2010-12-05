@@ -26,10 +26,12 @@ import java.util.List;
 
 public class AddScoreActivity extends GuiceActivity {
     public static final String EXTRA_PLAYER_IDS = "players";
+    public static final String EXTRA_EAST_PLAYER_ID = "east_player_id";
 
 	private static final String TAG = "AddScoreActivity";
     private RoundScoreCalculator calculator = new RoundScoreCalculator();
     private TextView[][] labelArray;
+    private RadioButton eastRadioButtons[];
 
     @Inject
     private PlayerRoundService playerRoundService;
@@ -76,6 +78,15 @@ public class AddScoreActivity extends GuiceActivity {
                         (TextView)findViewById(R.id.lblResult34)
                 }
         };
+
+        eastRadioButtons = new RadioButton[] {
+                (RadioButton)findViewById(R.id.RadioButton01),
+                (RadioButton)findViewById(R.id.RadioButton02),
+                (RadioButton)findViewById(R.id.RadioButton03),
+                (RadioButton)findViewById(R.id.RadioButton04),
+                (RadioButton)findViewById(R.id.RadioButton05)
+        };
+
         refreshResult();
     }
 
@@ -85,18 +96,50 @@ public class AddScoreActivity extends GuiceActivity {
         long[] players = (long[])getIntent().getLongArrayExtra(
                 AddScoreActivity.EXTRA_PLAYER_IDS);
 
-        TextView[][] labels = new TextView[][] {
+        TextView[][] nameLabels = new TextView[][] {
                 {(TextView)findViewById(R.id.lblPlayerName1_1)},
                 {(TextView)findViewById(R.id.lblPlayerName2_1)},
                 {(TextView)findViewById(R.id.lblPlayerName3_1)},
                 {(TextView)findViewById(R.id.lblPlayerName4_1)}
         };
 
+        TextView[] windLabels = new TextView[] {
+                (TextView)findViewById(R.id.lblWind01),
+                (TextView)findViewById(R.id.lblWind02),
+                (TextView)findViewById(R.id.lblWind03),
+                (TextView)findViewById(R.id.lblWind04),
+        };
+
+        Long eastPlayer =(long)getIntent().getLongExtra(EXTRA_EAST_PLAYER_ID, Person.ID_NOBODY);
+        int eastPosition = -1;
+        for (int index = 0; index < players.length; index++) {
+            if (players[index] == eastPlayer) {
+                eastPosition = index;
+                calculator.setEastPlayer(index);
+                break;
+            }
+        }
+        if (eastPosition < 0) throw new RuntimeException("no east position");
+
         for (int index = 0; index < players.length; index++) {
             Person person = personService.findById(players[index]);
-            labels[index][0].setText(person.getName());
+            nameLabels[index][0].setText(person.getName());
+            int wind = (index - eastPosition + 4) % 4;
+            switch (wind) {
+                case 0:
+                    windLabels[index].setText(R.string.east);
+                    break;
+                case 1:
+                    windLabels[index].setText(R.string.south);
+                    break;
+                case 2:
+                    windLabels[index].setText(R.string.west);
+                    break;
+                case 3:
+                    windLabels[index].setText(R.string.north);
+                    break;
+            }
         }
-
     }
 
     public void onSetPointsClick(View view) {
@@ -147,18 +190,11 @@ public class AddScoreActivity extends GuiceActivity {
 
     public void onWinnerSelect(View view) {
     	Log.d(TAG, "onWinnerSelect");
-    	RadioButton buttons[] = new RadioButton[] {
-    			(RadioButton)findViewById(R.id.RadioButton01),
-    			(RadioButton)findViewById(R.id.RadioButton02),
-    			(RadioButton)findViewById(R.id.RadioButton03),
-    			(RadioButton)findViewById(R.id.RadioButton04),
-    			(RadioButton)findViewById(R.id.RadioButton05)
-    	};
         Integer winner = 0;
-    	for (RadioButton item : buttons) {
+    	for (RadioButton item : eastRadioButtons) {
     		item.setChecked(item == view);
             if (item == view) {
-                if (view == buttons[4]) {
+                if (view == eastRadioButtons[4]) {
                     calculator.setWinner(null);
                 } else {
                     calculator.setWinner(winner);
@@ -201,8 +237,6 @@ public class AddScoreActivity extends GuiceActivity {
             playerRound.setRoundId(round.getId());
             if (calculator == null) Log.w(TAG, "calculator is null");
             if (calculator != null && calculator.getWinner() != null) {
-                playerRound.setWon(calculator.getWinner() == index);
-
                 int wind = (index + 4 - calculator.getEastPlayer()) % 4;
                 switch (wind) {
                     case 0:
@@ -217,6 +251,8 @@ public class AddScoreActivity extends GuiceActivity {
                     case 3:
                         playerRound.setWind(PlayerRound.windEnum.NORTH);
                         break;
+                    default:
+                        Log.w(TAG, "unknown wind");
                 }
             }
 

@@ -5,7 +5,6 @@ public class PlayerRound implements Model {
     private Long roundId;
     private Long person_id;
     private Integer amount;
-    private Boolean won;
 
     public enum windEnum {
         EAST,
@@ -48,23 +47,30 @@ public class PlayerRound implements Model {
         return amount;
     }
 
+    public String getAmount(String returnIfNull) {
+        if (amount == null) {
+            return returnIfNull;
+        }
+        return amount.toString();
+    }
+
     public void setAmount(Integer amount) {
         this.amount = amount;
-    }
-
-    public Boolean getWon() {
-        return won;
-    }
-
-    public void setWon(Boolean won) {
-        this.won = won;
     }
 
     public windEnum getWind() {
         return wind;
     }
 
+    public String getWind(String returnIfNull) {
+        if (wind == null) {
+            return returnIfNull;
+        }
+        return wind.toString();
+    }
+
     public void setWind(windEnum wind) {
         this.wind = wind;
     }
+
 }

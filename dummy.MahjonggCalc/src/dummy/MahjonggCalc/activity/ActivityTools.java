@@ -13,4 +13,13 @@ public class ActivityTools {
             textView.setTextColor(textView.getResources().getColor(R.color.green));
         }
     }
+
+    public static void setLabel(TextView textView, String text, Integer value) {
+        textView.setText(text.toString());
+        if (value < 0) {
+            textView.setTextColor(textView.getResources().getColor(R.color.red));
+        } else {
+            textView.setTextColor(textView.getResources().getColor(R.color.green));
+        }
+    }
 }

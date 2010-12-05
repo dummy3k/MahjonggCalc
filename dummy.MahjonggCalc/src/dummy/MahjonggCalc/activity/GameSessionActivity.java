@@ -11,6 +11,7 @@ import android.widget.*;
 import com.google.inject.Inject;
 import dummy.MahjonggCalc.R;
 import dummy.MahjonggCalc.db.model.Person;
+import dummy.MahjonggCalc.db.model.PlayerRound;
 import dummy.MahjonggCalc.db.model.Round;
 import dummy.MahjonggCalc.db.service.PersonService;
 import dummy.MahjonggCalc.db.service.RoundService;
@@ -38,6 +39,7 @@ public class GameSessionActivity extends GuiceActivity {
 
     private Person[] players;
     private long[] personIds;
+    private Long eastPlayerId;
 
     /** Called when the activity is first created. */
     @Override
@@ -59,10 +61,23 @@ public class GameSessionActivity extends GuiceActivity {
                 intent.getLongExtra(EXTRA_PARTICIPANT_4, Person.ID_NOBODY),
         };
         List<Round> rounds = roundService.findAllByPlayers(personIds, getResources());
+        Round[] roundsArray = rounds.toArray(new Round[]{});
         RoundListAdapter adapter = new RoundListAdapter(this,
                 R.layout.game_session_listitem, R.id.TextView01,
-                rounds.toArray(new Round[]{}));
+                roundsArray);
         list.setAdapter(adapter);
+
+        if (roundsArray.length > 0) {
+            Round lastRound = roundsArray[roundsArray.length -1];
+            Long eastPlayerId = lastRound.findPlayerIdRoundByWind(
+                    PlayerRound.windEnum.EAST);
+            if (lastRound.getWinner().equals(eastPlayerId)) {
+                this.eastPlayerId = eastPlayerId;
+            } else {
+                this.eastPlayerId = lastRound.findPlayerIdRoundByWind(
+                        PlayerRound.windEnum.SOUTH);
+            }
+        }
 
         int sums[] = new int[4];
         for (Round item : rounds) {
@@ -122,26 +137,55 @@ public class GameSessionActivity extends GuiceActivity {
             Log.d(TAG, "getView(" + position + ")");
             LayoutInflater inflater = (LayoutInflater)
                 mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if (inflater == null) {
-                Log.e(TAG, "inflater is null!");
-            }
-			
-            View row=inflater.inflate(R.layout.game_session_listitem, null);
+
             Round round = mItems[position];
+            View row = inflater.inflate(R.layout.game_session_listitem, null);
 
+            PlayerRound playerRound = round.findPlayerRoundByPlayerId(personIds[0]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView01),
-                    round.findPlayerRoundByPlayerId(personIds[0]).getAmount());
+                    String.format("%s (%s)",
+                            playerRound.getAmount("-"),
+                            playerRound.getWind("-").charAt(0)),
+                    playerRound.getAmount());
 
+            playerRound = round.findPlayerRoundByPlayerId(personIds[1]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView02),
-                    round.findPlayerRoundByPlayerId(personIds[1]).getAmount());
+                    String.format("%s (%s)",
+                            playerRound.getAmount("-"),
+                            playerRound.getWind("-").charAt(0)),
+                    playerRound.getAmount());
 
+            playerRound = round.findPlayerRoundByPlayerId(personIds[2]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView03),
-                    round.findPlayerRoundByPlayerId(personIds[2]).getAmount());
+                    String.format("%s (%s)",
+                            playerRound.getAmount("-"),
+                            playerRound.getWind("-").charAt(0)),
+                    playerRound.getAmount());
 
+            playerRound = round.findPlayerRoundByPlayerId(personIds[3]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView04),
-                    round.findPlayerRoundByPlayerId(personIds[3]).getAmount());
+                    String.format("%s (%s)",
+                            playerRound.getAmount("-"),
+                            playerRound.getWind("-").charAt(0)),
+                    playerRound.getAmount());
+
+//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView01),
+//                    round.findPlayerRoundByPlayerId(personIds[0]).getAmount());
+//
+//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView02),
+//                    round.findPlayerRoundByPlayerId(personIds[1]).getAmount());
+//
+//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView03),
+//                    round.findPlayerRoundByPlayerId(personIds[2]).getAmount());
+//
+//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView04),
+//                    round.findPlayerRoundByPlayerId(personIds[3]).getAmount());
 
             return row;
+        }
+
+        private void setLabel(int layoutId, int index, View row) {
+
         }
     }
     
@@ -159,6 +203,7 @@ public class GameSessionActivity extends GuiceActivity {
 
         }
         intent.putExtra(AddScoreActivity.EXTRA_PLAYER_IDS, playerIds);
+        intent.putExtra(AddScoreActivity.EXTRA_EAST_PLAYER_ID, eastPlayerId);
 
         startActivity(intent);
     }

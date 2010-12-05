@@ -28,6 +28,7 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
 		Round obj = new Round();
 		obj.setId(cursor.getLong(cursor.getColumnIndex("id")));
 		obj.setTime_stamp(parseDate(cursor, "time_stamp"));
+        obj.setWinner(cursor.getLong(cursor.getColumnIndex("winner")));
 
 		List<PlayerRound> cells = PlayerRoundService.findAllByRoundId(obj.getId());
 		obj.setPlayers(cells);
@@ -59,6 +60,7 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
 	protected ContentValues write(Round obj) {
 		ContentValues values = new ContentValues();
 		values.put("id", obj.getId());
+		values.put("winner", obj.getWinner());
 		values.put("time_stamp", formatDate(obj.getTime_stamp()));
 		return values;
 	}
@@ -94,34 +96,28 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
 
 //        List<Round> lst = _list(cursor);
         List<Round> lst = new ArrayList<Round>();
+        final int colsPerPlayer = 3;
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 Round round = new Round();
                 round.setId(cursor.getLong(0));
 
-                PlayerRound playerRound1 = new PlayerRound();
-                playerRound1.setRoundId(cursor.getLong(0));
-                playerRound1.setId(cursor.getLong(1));
-                playerRound1.setAmount(cursor.getInt(2));
-                round.getPlayers().add(playerRound1);
+                for (int index = 0; index < 4; index++) {
+                    PlayerRound playerRound1 = new PlayerRound();
+                    playerRound1.setRoundId(cursor.getLong(0));
+                    playerRound1.setId(cursor.getLong(index * colsPerPlayer + 1));
+                    playerRound1.setAmount(cursor.getInt(index * colsPerPlayer + 2));
 
-                PlayerRound playerRound2 = new PlayerRound();
-                playerRound2.setRoundId(cursor.getLong(0));
-                playerRound2.setId(cursor.getLong(3));
-                playerRound2.setAmount(cursor.getInt(4));
-                round.getPlayers().add(playerRound2);
+                    String wind = cursor.getString(index * colsPerPlayer + 3);
+                    if (wind == null) {
+                        playerRound1.setWind(null);
+                    } else {
+                        playerRound1.setWind(PlayerRound.windEnum.valueOf(
+                                wind));
+                    }
+                    round.getPlayers().add(playerRound1);
+                }
 
-                PlayerRound playerRound3 = new PlayerRound();
-                playerRound3.setRoundId(cursor.getLong(0));
-                playerRound3.setId(cursor.getLong(5));
-                playerRound3.setAmount(cursor.getInt(6));
-                round.getPlayers().add(playerRound3);
-
-                PlayerRound playerRound4 = new PlayerRound();
-                playerRound4.setRoundId(cursor.getLong(0));
-                playerRound4.setId(cursor.getLong(7));
-                playerRound4.setAmount(cursor.getInt(8));
-                round.getPlayers().add(playerRound4);
 
                 lst.add(round);
             } while (cursor.moveToNext());

@@ -8,6 +8,7 @@ public class Round implements Model {
 	private Long id;
 	private List<PlayerRound> players;
     private Date time_stamp;
+    private Long winner;
 
     public Round() {
         players = new ArrayList<PlayerRound>();
@@ -32,7 +33,16 @@ public class Round implements Model {
                 return item;
             }
         }
-        throw new RuntimeException("player not found");
+        throw new RuntimeException("player not found: " + id);
+    }
+
+    public Long findPlayerIdRoundByWind(PlayerRound.windEnum wind) {
+        for (PlayerRound item : players) {
+            if (item.getWind().equals(wind)) {
+                return item.getPersonId();
+            }
+        }
+        throw new RuntimeException("player not found: " + id);
     }
 
     public List<PlayerRound> getPlayers() {
@@ -49,5 +59,13 @@ public class Round implements Model {
 
     public void setTime_stamp(Date time_stamp) {
         this.time_stamp = time_stamp;
+    }
+
+    public Long getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Long winner) {
+        this.winner = winner;
     }
 }

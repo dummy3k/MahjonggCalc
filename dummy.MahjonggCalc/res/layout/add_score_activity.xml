@@ -20,8 +20,13 @@
     </TableRow>
 
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/east"
-			android:layout_margin="5dp" android:layout_gravity="center_vertical"/>
+		<TextView android:id="@+id/lblWind01"
+                  android:text="@string/east"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+			      android:layout_margin="5dp"
+                  android:layout_gravity="center_vertical"
+                />
 		<TextView android:id="@+id/lblPlayerName1_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="Player 1"
 			      android:layout_column="2"
@@ -42,7 +47,13 @@
                 />
     </TableRow>
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="@string/south" android:layout_gravity="center_vertical"/>
+        <TextView android:id="@+id/lblWind02"
+                  android:text="@string/east"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="5dp"
+                  android:layout_gravity="center_vertical"
+                />
         <TextView android:id="@+id/lblPlayerName2_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="Player 1"
                   android:layout_column="2"
@@ -64,7 +75,13 @@
                 />
     </TableRow>
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="@string/west" android:layout_gravity="center_vertical"/>
+        <TextView android:id="@+id/lblWind03"
+                  android:text="@string/east"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="5dp"
+                  android:layout_gravity="center_vertical"
+                />
         <TextView android:id="@+id/lblPlayerName3_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="Player 1"
                   android:layout_column="2"
@@ -85,7 +102,13 @@
                 />
     </TableRow>
 	<TableRow android:id="@+id/TableRow01" android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="@string/north" android:layout_gravity="center_vertical"/>
+        <TextView android:id="@+id/lblWind04"
+                  android:text="@string/east"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="5dp"
+                  android:layout_gravity="center_vertical"
+                />
         <TextView android:id="@+id/lblPlayerName4_1" android:layout_width="wrap_content" android:layout_height="wrap_content"
                   android:text="Player 1"
                   android:layout_column="2"

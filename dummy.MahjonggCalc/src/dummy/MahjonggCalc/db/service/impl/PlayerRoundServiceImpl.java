@@ -3,12 +3,16 @@ package dummy.MahjonggCalc.db.service.impl;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import dummy.MahjonggCalc.db.model.PlayerRound;
 import dummy.MahjonggCalc.db.service.PlayerRoundService;
+import sun.security.krb5.internal.ccache.Tag;
 
 import java.util.List;
 
 public class PlayerRoundServiceImpl extends AbstractServiceImpl<PlayerRound> implements PlayerRoundService {
+    private static final String TAG = "PlayerRoundServiceImpl";
+
 	@Override
 	protected PlayerRound read(Cursor cursor) {
 		PlayerRound obj = new PlayerRound();
@@ -16,7 +20,6 @@ public class PlayerRoundServiceImpl extends AbstractServiceImpl<PlayerRound> imp
         obj.setAmount(cursor.getInt(cursor.getColumnIndex("amount")));
         obj.setPerson_id(cursor.getLong(cursor.getColumnIndex("person_id")));
         obj.setRoundId(cursor.getLong(cursor.getColumnIndex("round_id")));
-        obj.setWon(cursor.getInt(cursor.getColumnIndex("won")) == 1);
         obj.setWind(PlayerRound.windEnum.valueOf(
                 cursor.getString(cursor.getColumnIndex("wind"))));
 		return obj;
@@ -29,8 +32,11 @@ public class PlayerRoundServiceImpl extends AbstractServiceImpl<PlayerRound> imp
 		values.put("amount", obj.getAmount());
 		values.put("person_id", obj.getPersonId());
 		values.put("round_id", obj.getRoundId());
-		values.put("won", obj.getWon() ? 1 : 0);
-        values.put("wind", obj.getWind().toString());
+        if (obj.getWind() != null) {
+            values.put("wind", obj.getWind().toString());
+        } else {
+            values.put("wind", (String)null);
+        }
 		return values;
 	}
 
