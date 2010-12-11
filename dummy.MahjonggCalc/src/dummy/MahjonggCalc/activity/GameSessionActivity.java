@@ -39,7 +39,6 @@ public class GameSessionActivity extends GuiceActivity {
 
     private Person[] players;
     private long[] personIds;
-    private Long eastPlayerId;
 
     /** Called when the activity is first created. */
     @Override
@@ -66,18 +65,6 @@ public class GameSessionActivity extends GuiceActivity {
                 R.layout.game_session_listitem, R.id.TextView01,
                 roundsArray);
         list.setAdapter(adapter);
-
-        if (roundsArray.length > 0) {
-            Round lastRound = roundsArray[roundsArray.length -1];
-            Long eastPlayerId = lastRound.findPlayerIdRoundByWind(
-                    PlayerRound.windEnum.EAST);
-            if (lastRound.getWinner().equals(eastPlayerId)) {
-                this.eastPlayerId = eastPlayerId;
-            } else {
-                this.eastPlayerId = lastRound.findPlayerIdRoundByWind(
-                        PlayerRound.windEnum.SOUTH);
-            }
-        }
 
         int sums[] = new int[4];
         for (Round item : rounds) {
@@ -143,30 +130,38 @@ public class GameSessionActivity extends GuiceActivity {
 
             PlayerRound playerRound = round.findPlayerRoundByPlayerId(personIds[0]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView01),
-                    String.format("%s (%s)",
+                    String.format("%s (%s)%s",
                             playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0)),
+                            playerRound.getWind("-").charAt(0),
+                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
+                            ),
                     playerRound.getAmount());
 
             playerRound = round.findPlayerRoundByPlayerId(personIds[1]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView02),
-                    String.format("%s (%s)",
+                    String.format("%s (%s)%s",
                             playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0)),
+                            playerRound.getWind("-").charAt(0),
+                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
+                            ),
                     playerRound.getAmount());
 
             playerRound = round.findPlayerRoundByPlayerId(personIds[2]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView03),
-                    String.format("%s (%s)",
+                    String.format("%s (%s)%s",
                             playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0)),
+                            playerRound.getWind("-").charAt(0),
+                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
+                            ),
                     playerRound.getAmount());
 
             playerRound = round.findPlayerRoundByPlayerId(personIds[3]);
             ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView04),
-                    String.format("%s (%s)",
+                    String.format("%s (%s)%s",
                             playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0)),
+                            playerRound.getWind("-").charAt(0),
+                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
+                            ),
                     playerRound.getAmount());
 
 //            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView01),
@@ -203,7 +198,7 @@ public class GameSessionActivity extends GuiceActivity {
 
         }
         intent.putExtra(AddScoreActivity.EXTRA_PLAYER_IDS, playerIds);
-        intent.putExtra(AddScoreActivity.EXTRA_EAST_PLAYER_ID, eastPlayerId);
+//        intent.putExtra(AddScoreActivity.EXTRA_EAST_PLAYER_ID, eastPlayerId);
 
         startActivity(intent);
     }

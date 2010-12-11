@@ -1,22 +1,22 @@
-package dummy.MahjonggCalc.test;
+package dummy.MahjonggCalc;
 
-import dummy.MahjonggCalc.RoundScoreCalculator;
-import android.test.AndroidTestCase;
+import junit.framework.Assert;
+import junit.framework.TestCase;
 
-public class RoundScoreCalculatorTest extends AndroidTestCase {
+public class RoundScoreCalculatorTest extends TestCase {
     public void testEmptyResult() {
     	RoundScoreCalculator calculator = new RoundScoreCalculator();
     	Integer result[][] = calculator.getResult();
     	for (int x = 0; x < 4; x++)
     		for (int y = 0; y < 4; y++) {
-    			assertNull(result[x][y]);
+    			Assert.assertNull(result[x][y]);
     		}
       }
 
     private void assertEqualArray(Integer[][] array1, Integer[][] array2) {
     	for (int x = 0; x < 4; x++)
     		for (int y = 0; y < 4; y++) {
-    			assertEquals(array1[x][y], array2[x][y]);
+    			Assert.assertEquals(array1[x][y], array2[x][y]);
     		}
     }
     

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Round implements Model {
+public class Round implements Model, Cloneable {
 	private Long id;
 	private List<PlayerRound> players;
     private Date time_stamp;
@@ -18,7 +18,17 @@ public class Round implements Model {
 	public String toString() {
 		return "Round()";
 	}
-	
+
+    public Round clone() throws CloneNotSupportedException {
+        Round retVal = (Round)super.clone();
+        List<PlayerRound> newPlayerList = new ArrayList<PlayerRound>();
+        for (PlayerRound item : players) {
+            newPlayerList.add(item.clone());
+        }
+        retVal.setPlayers(newPlayerList);
+        return retVal;
+    }
+
 	public Long getId() {
 		return id;
 	}

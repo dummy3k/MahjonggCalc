@@ -18,7 +18,7 @@
         );
     </string>
     <string name="select_rounds_by_players">
-        SELECT rounds.id,
+        SELECT rounds.id, rounds.winner,
             pr1.person_id, pr1.amount, pr1.wind,
             pr2.person_id, pr2.amount, pr2.wind,
             pr3.person_id, pr3.amount, pr3.wind,
@@ -32,5 +32,23 @@
             AND pr2.person_id = ?
 	        AND pr3.person_id = ?
             AND pr4.person_id = ?
+    </string>
+    <string name="select_last_round_by_players">
+        SELECT rounds.id, rounds.winner,
+            pr1.person_id, pr1.amount, pr1.wind,
+            pr2.person_id, pr2.amount, pr2.wind,
+            pr3.person_id, pr3.amount, pr3.wind,
+            pr4.person_id, pr4.amount, pr4.wind
+        FROM rounds
+            LEFT JOIN player_rounds pr1 ON (pr1.round_id = rounds.id)
+            LEFT JOIN player_rounds pr2 ON (pr2.round_id = rounds.id)
+            LEFT JOIN player_rounds pr3 ON (pr3.round_id = rounds.id)
+            LEFT JOIN player_rounds pr4 ON (pr4.round_id = rounds.id)
+        WHERE pr1.person_id = ?
+            AND pr2.person_id = ?
+	        AND pr3.person_id = ?
+            AND pr4.person_id = ?
+        ORDER BY rounds.id DESC
+        LIMIT 1
     </string>
 </resources>

@@ -10,4 +10,6 @@ import java.util.List;
 public interface RoundService extends Service<Round> {
     List<Round> findAllByGameSessionId(Long id);
     List<Round> findAllByPlayers(long[] ids, Resources resources);
+    Round lastRound(long[] ids, Resources resources);
+    Round newRound(long[] ids);
 }

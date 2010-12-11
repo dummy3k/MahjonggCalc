@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import com.google.inject.Inject;
+import dummy.MahjonggCalc.NextRoundLogic;
 import dummy.MahjonggCalc.R;
 import dummy.MahjonggCalc.RoundScoreCalculator;
 import dummy.MahjonggCalc.db.model.Person;
@@ -110,35 +111,56 @@ public class AddScoreActivity extends GuiceActivity {
                 (TextView)findViewById(R.id.lblWind04),
         };
 
-        Long eastPlayer =(long)getIntent().getLongExtra(EXTRA_EAST_PLAYER_ID, Person.ID_NOBODY);
-        int eastPosition = -1;
-        for (int index = 0; index < players.length; index++) {
-            if (players[index] == eastPlayer) {
-                eastPosition = index;
-                calculator.setEastPlayer(index);
-                break;
+//        Long eastPlayer =(long)getIntent().getLongExtra(EXTRA_EAST_PLAYER_ID, Person.ID_NOBODY);
+//        int eastPosition = -1;
+//        for (int index = 0; index < players.length; index++) {
+//            if (players[index] == eastPlayer) {
+//                eastPosition = index;
+//                calculator.setEastPlayer(index);
+//                break;
+//            }
+//        }
+//        if (eastPosition < 0) throw new RuntimeException("no east position");
+
+
+        Round lastRound = roundService.lastRound(players, getResources());
+        Round round = null;
+        if (lastRound != null) {
+            for (PlayerRound item : lastRound.getPlayers()) {
+                Person person = personService.findById(item.getPersonId());
+                Log.d(TAG, "wind: " + item.getWind("<null>") + ", person: " + person.getName());
             }
+            NextRoundLogic roundLogic = new NextRoundLogic();
+            round = roundLogic.next(lastRound);
+        } else {
+            round = roundService.newRound(players);
         }
-        if (eastPosition < 0) throw new RuntimeException("no east position");
 
         for (int index = 0; index < players.length; index++) {
+            PlayerRound playerRound = round.getPlayers().get(index);
             Person person = personService.findById(players[index]);
             nameLabels[index][0].setText(person.getName());
-            int wind = (index - eastPosition + 4) % 4;
-            switch (wind) {
-                case 0:
-                    windLabels[index].setText(R.string.east);
-                    break;
-                case 1:
-                    windLabels[index].setText(R.string.south);
-                    break;
-                case 2:
-                    windLabels[index].setText(R.string.west);
-                    break;
-                case 3:
-                    windLabels[index].setText(R.string.north);
-                    break;
+            windLabels[index].setText(playerRound.getWind().toString(getResources()));
+
+            if (playerRound.getWind() == PlayerRound.windEnum.EAST) {
+                calculator.setEastPlayer(index);
             }
+
+//            int wind = (index - eastPosition + 4) % 4;
+//            switch (wind) {
+//                case 0:
+//                    windLabels[index].setText(R.string.east);
+//                    break;
+//                case 1:
+//                    windLabels[index].setText(R.string.south);
+//                    break;
+//                case 2:
+//                    windLabels[index].setText(R.string.west);
+//                    break;
+//                case 3:
+//                    windLabels[index].setText(R.string.north);
+//                    break;
+//            }
         }
     }
 
@@ -233,7 +255,7 @@ public class AddScoreActivity extends GuiceActivity {
         int index = 0;
         for (long playerId : players) {
             PlayerRound playerRound = new PlayerRound();
-            playerRound.setPerson_id(playerId);
+            playerRound.setPersonId(playerId);
             playerRound.setRoundId(round.getId());
             if (calculator == null) Log.w(TAG, "calculator is null");
             if (calculator != null && calculator.getWinner() != null) {
@@ -255,6 +277,7 @@ public class AddScoreActivity extends GuiceActivity {
                         Log.w(TAG, "unknown wind");
                 }
             }
+            roundService.saveOrUpdate(round);
 
             int sum = 0;
             for (int x = 0; x < 4; x++) {
@@ -263,6 +286,11 @@ public class AddScoreActivity extends GuiceActivity {
                 }
             }
             playerRound.setAmount(sum);
+
+            if (calculator.getWinner() != null &&
+                    calculator.getWinner() == index) {
+                round.setWinner(playerId);
+            }
             playerRoundService.saveOrUpdate(playerRound);
             index++;
         }

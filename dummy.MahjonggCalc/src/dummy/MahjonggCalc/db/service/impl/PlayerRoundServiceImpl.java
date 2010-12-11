@@ -3,10 +3,8 @@ package dummy.MahjonggCalc.db.service.impl;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 import dummy.MahjonggCalc.db.model.PlayerRound;
 import dummy.MahjonggCalc.db.service.PlayerRoundService;
-import sun.security.krb5.internal.ccache.Tag;
 
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class PlayerRoundServiceImpl extends AbstractServiceImpl<PlayerRound> imp
 		PlayerRound obj = new PlayerRound();
 		obj.setId(cursor.getLong(cursor.getColumnIndex("id")));
         obj.setAmount(cursor.getInt(cursor.getColumnIndex("amount")));
-        obj.setPerson_id(cursor.getLong(cursor.getColumnIndex("person_id")));
+        obj.setPersonId(cursor.getLong(cursor.getColumnIndex("person_id")));
         obj.setRoundId(cursor.getLong(cursor.getColumnIndex("round_id")));
         obj.setWind(PlayerRound.windEnum.valueOf(
                 cursor.getString(cursor.getColumnIndex("wind"))));

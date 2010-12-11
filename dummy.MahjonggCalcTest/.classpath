@@ -2,7 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/dummy.MahjonggCalc"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Dummy.MahjonggCalc/"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lib-test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Android 2.2 Platform"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

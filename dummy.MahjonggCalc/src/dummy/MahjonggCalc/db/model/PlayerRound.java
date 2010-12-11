@@ -1,18 +1,77 @@
 package dummy.MahjonggCalc.db.model;
 
-public class PlayerRound implements Model {
+import android.content.res.Resources;
+import dummy.MahjonggCalc.R;
+
+public class PlayerRound implements Model, Cloneable {
 	private Long id;
     private Long roundId;
     private Long person_id;
     private Integer amount;
 
     public enum windEnum {
-        EAST,
-        SOUTH,
-        WEST,
-        NORTH
+        EAST(0),
+        SOUTH(1),
+        WEST(2),
+        NORTH(3);
+
+        private final int value;
+        windEnum(int i) {
+            value = i;
+        }
+
+        public static windEnum byInt(int value) {
+            if (value == EAST.value) return  EAST;
+            if (value == SOUTH.value) return  SOUTH;
+            if (value == WEST.value) return  WEST;
+            if (value == NORTH.value) return  NORTH;
+            throw new RuntimeException("byInt, bad value");
+        }
+
+        public String toString(Resources res) {
+            switch (this) {
+                case EAST:
+                    return res.getString(R.string.east);
+                case SOUTH:
+                    return res.getString(R.string.south);
+                case WEST:
+                    return res.getString(R.string.west);
+                case NORTH:
+                    return res.getString(R.string.north);
+            }
+            throw new RuntimeException("wtf");
+        }
+
+//        public windEnum next() {
+//            switch (this) {
+//                case EAST:
+//                    return SOUTH;
+//                case SOUTH:
+//                    return WEST;
+//                case WEST:
+//                    return NORTH;
+//                case NORTH:
+//                    return EAST;
+//            }
+//            throw new RuntimeException("wtf");
+//        }
     }
     private windEnum wind;
+
+    public  PlayerRound() {
+
+    }
+
+    public PlayerRound clone() throws CloneNotSupportedException {
+        return (PlayerRound)super.clone();
+    }
+
+
+    public  PlayerRound(Long id, Long person_id, windEnum wind) {
+        this.id = id;
+        this.person_id = person_id;
+        this.wind = wind;
+    }
 
 	@Override
 	public String toString() {
@@ -39,7 +98,7 @@ public class PlayerRound implements Model {
         return person_id;
     }
 
-    public void setPerson_id(Long person_id) {
+    public void setPersonId(Long person_id) {
         this.person_id = person_id;
     }
 

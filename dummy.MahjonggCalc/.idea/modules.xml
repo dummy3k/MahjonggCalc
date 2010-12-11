@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Dummy.MahjonggCalc.iml" filepath="$PROJECT_DIR$/Dummy.MahjonggCalc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../dummy.MahjonggCalcTest/dummy.MahjonggCalcTest.iml" filepath="$PROJECT_DIR$/../dummy.MahjonggCalcTest/dummy.MahjonggCalcTest.iml" />
     </modules>
   </component>
 </project>
