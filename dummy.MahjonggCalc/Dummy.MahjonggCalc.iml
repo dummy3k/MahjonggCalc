@@ -30,6 +30,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/gen" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../dummy.MahjonggCalcTest/src">
+      <sourceFolder url="file://$MODULE_DIR$/../dummy.MahjonggCalcTest/src" isTestSource="true" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Android 2.2 Platform" level="application" />

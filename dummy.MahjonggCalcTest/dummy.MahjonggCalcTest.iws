@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="DEBUG" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d5e8e28-27d1-4e1b-bc6d-322bf57606fc" name="Default" comment="" />
-    <ignored path="dummy.MahjonggCalc.iws" />
+    <list default="true" id="ed55e995-e44d-4785-b6b7-7995efb5413e" name="Default" comment="" />
+    <ignored path="dummy.MahjonggCalcTest.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,15 +55,26 @@
     <ui_properties />
   </component>
   <component name="FavoritesManager">
-    <favorites_list name="dummy.MahjonggCalc" />
+    <favorites_list name="dummy.MahjonggCalcTest" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RoundScoreCalculatorTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../dummy.MahjonggCalcTest/src/dummy/MahjonggCalc/test/RoundScoreCalculatorTest.java">
+      <file leaf-file-name="RoundScoreCalculatorTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/test/RoundScoreCalculatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="33" selection-start="217" selection-end="217" vertical-scroll-proportion="0.20215634">
+            <state line="2" column="25" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonServiceImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../dummy.MahjonggCalc/src/dummy/MahjonggCalc/db/service/impl/PersonServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="60" selection-start="573" selection-end="573" vertical-scroll-proportion="0.75630254">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,42 +85,6 @@
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
-  </component>
-  <component name="Git.Settings">
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="changedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/res/layout/game_session_activity.xml" />
-        <option value="$PROJECT_DIR$/res/layout/game_session_listitem.xml" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/RoundScoreCalculator.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/DatabaseHelper.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/Module.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/ActivityTools.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/StartGameSessionActivity.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/PlayerRoundServiceImpl.java" />
-        <option value="$PROJECT_DIR$/res/values/sql.xml" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/PlayerRound.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/RoundService.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/Round.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/add_score_activity.xml" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/AddScoreActivity.java" />
-        <option value="$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/RoundServiceImpl.java" />
-      </list>
-    </option>
-  </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState />
   </component>
   <component name="MavenRunner">
     <option name="jreName" value="#JAVA_INTERNAL" />
@@ -147,26 +119,11 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dummy.MahjonggCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Dummy.MahjonggCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dummy.MahjonggCalc" />
+              <option name="myItemId" value="dummy.MahjonggCalcTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -176,89 +133,70 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dummy.MahjonggCalc" />
+              <option name="myItemId" value="dummy.MahjonggCalcTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dummy.MahjonggCalc" />
+              <option name="myItemId" value="dummy.MahjonggCalcTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="dummy.MahjonggCalcTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dummy.MahjonggCalc" />
+              <option name="myItemId" value="dummy.MahjonggCalcTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Dummy.MahjonggCalc" />
+              <option name="myItemId" value="dummy.MahjonggCalcTest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Favorites" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="preferences.keymap" />
-    <property name="project.structure.side.proportion" value="0.11546841" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="project.structure.side.proportion" value="0.22657177" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
   </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="dummy.MahjonggCalc.db.service" />
-      <recent name="dummy.MahjonggCalc.db.service.impl" />
-      <recent name="dummy.MahjonggCalc.db.model" />
-      <recent name="dummy.MahjonggCalc.activity" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/res/layout" />
-      <recent name="$PROJECT_DIR$/res/values" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.All in Dummy.MahjonggCalc">
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
+  <component name="RunManager" selected="JUnit.All in dummy.MahjonggCalcTest">
+    <configuration default="false" name="All in dummy.MahjonggCalcTest" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="dummy.MahjonggCalcTest" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -366,70 +304,8 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="false" name="Dummy.MahjonggCalc" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="Dummy.MahjonggCalc" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="CHOOSE_DEVICE_MANUALLY" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <RunnerSettings RunnerId="AndroidDebugRunner" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="All in Dummy.MahjonggCalc" type="JUnit" factoryName="JUnit">
-      <module name="Dummy.MahjonggCalc" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Android Application.Dummy.MahjonggCalc" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.All in Dummy.MahjonggCalc" />
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.All in dummy.MahjonggCalcTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -450,14 +326,13 @@
     <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <configuration useDefault="true">$USER_HOME$/.subversion_IDEA</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5d5e8e28-27d1-4e1b-bc6d-322bf57606fc" name="Default" comment="" />
-      <created>1291571213171</created>
-      <updated>1291571213171</updated>
+      <changelist id="ed55e995-e44d-4785-b6b7-7995efb5413e" name="Default" comment="" />
+      <created>1291576526822</created>
+      <updated>1291576526822</updated>
     </task>
     <servers />
   </component>
@@ -468,22 +343,21 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39864865" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32715008" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32715008" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284974" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31088084" sideWeight="0.6739865" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24870466" sideWeight="0.67116356" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3260135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Logcat" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8344595" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" x="342" y="36" width="682" height="495" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3288364" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24870466" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39966273" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
@@ -522,87 +396,19 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/RoundScoreCalculator.java">
+    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/test/RoundScoreCalculatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="19" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/Module.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="51" selection-start="80" selection-end="80" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/ActivityTools.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="29" selection-start="647" selection-end="647" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/StartGameSessionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="617" selection-end="617" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/AbstractServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="53" selection-start="2139" selection-end="2139" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/PlayerRoundServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="914" selection-end="1031" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/sql.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="58" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-6-openjdk/jre/lib/rt.jar!/java/util/List.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="6" selection-start="900" selection-end="900" vertical-scroll-proportion="0.3882979" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/RoundService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="396" selection-end="396" vertical-scroll-proportion="0.19266056" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/PlayerRound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/GameSessionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="75" selection-start="8631" selection-end="8631" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/model/Round.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="41" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/activity/AddScoreActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="234" column="72" selection-start="8797" selection-end="8797" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/add_score_activity.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="42" selection-start="5831" selection-end="5831" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dummy/MahjonggCalc/db/service/impl/RoundServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="42" selection-start="1628" selection-end="1628" vertical-scroll-proportion="0.027223231">
+        <state line="2" column="25" selection-start="59" selection-end="59" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../dummy.MahjonggCalcTest/src/dummy/MahjonggCalc/test/RoundScoreCalculatorTest.java">
+    <entry file="file://$PROJECT_DIR$/../dummy.MahjonggCalc/src/dummy/MahjonggCalc/db/service/impl/PersonServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="33" selection-start="217" selection-end="217" vertical-scroll-proportion="0.20215634">
-          <folding />
+        <state line="18" column="60" selection-start="573" selection-end="573" vertical-scroll-proportion="0.75630254">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -615,7 +421,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.11546841" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -623,11 +429,11 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android (Dummy.MahjonggCalc)|Android</last-edited>
+          <last-edited>Android (dummy.MahjonggCalcTest)|Android</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.11546841" />
+                <option value="0.22657177" />
               </list>
             </option>
           </splitter-proportions>
@@ -639,7 +445,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.22657177" />
               </list>
             </option>
           </splitter-proportions>
@@ -651,7 +457,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.11546841" />
+                <option value="0.22657177" />
               </list>
             </option>
           </splitter-proportions>
@@ -659,12 +465,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Dummy.MahjonggCalc</last-edited>
+          <last-edited>Android|dummy.MahjonggCalcTest</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.11546841" />
-                <option value="0.5" />
+                <option value="0.22657177" />
               </list>
             </option>
           </splitter-proportions>
@@ -676,7 +481,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.11546841" />
+                <option value="0.22657177" />
               </list>
             </option>
           </splitter-proportions>
