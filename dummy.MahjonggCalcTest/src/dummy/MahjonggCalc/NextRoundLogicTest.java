@@ -48,7 +48,7 @@ public class NextRoundLogicTest extends TestCase {
                 nextRound.getPlayers().get(0).getId());
       }
 
-    public void testNoWinner() {
+    public void testNoWinnerNull() {
         Round round = new Round();
         round.setPlayers(Arrays.asList(
                 new PlayerRound(100L, 0L, PlayerRound.windEnum.EAST),
@@ -56,7 +56,29 @@ public class NextRoundLogicTest extends TestCase {
                 new PlayerRound(102L, 2L, PlayerRound.windEnum.WEST),
                 new PlayerRound(103L, 3L, PlayerRound.windEnum.NORTH)
         ));
-//        round.setWinner(1L);
+        round.setWinner(null);
+
+        NextRoundLogic logic = new NextRoundLogic();
+        Round nextRound = logic.next(round);
+        Assert.assertEquals(PlayerRound.windEnum.EAST,
+                round.getPlayers().get(0).getWind());
+        Assert.assertEquals(PlayerRound.windEnum.EAST,
+                nextRound.getPlayers().get(0).getWind());
+        Assert.assertEquals(new Long(100L),
+                round.getPlayers().get(0).getId());
+        Assert.assertEquals(null,
+                nextRound.getPlayers().get(0).getId());
+      }
+
+    public void testNoWinnerZero() {
+        Round round = new Round();
+        round.setPlayers(Arrays.asList(
+                new PlayerRound(100L, 0L, PlayerRound.windEnum.EAST),
+                new PlayerRound(101L, 1L, PlayerRound.windEnum.SOUTH),
+                new PlayerRound(102L, 2L, PlayerRound.windEnum.WEST),
+                new PlayerRound(103L, 3L, PlayerRound.windEnum.NORTH)
+        ));
+        round.setWinner(0L);
 
         NextRoundLogic logic = new NextRoundLogic();
         Round nextRound = logic.next(round);

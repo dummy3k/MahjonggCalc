@@ -27,12 +27,12 @@ import java.util.List;
 
 public class AddScoreActivity extends GuiceActivity {
     public static final String EXTRA_PLAYER_IDS = "players";
-    public static final String EXTRA_EAST_PLAYER_ID = "east_player_id";
 
 	private static final String TAG = "AddScoreActivity";
     private RoundScoreCalculator calculator = new RoundScoreCalculator();
     private TextView[][] labelArray;
     private RadioButton eastRadioButtons[];
+    private final List<TextView> amountLabelList = new ArrayList<TextView>();
 
     @Inject
     private PlayerRoundService playerRoundService;
@@ -88,14 +88,20 @@ public class AddScoreActivity extends GuiceActivity {
                 (RadioButton)findViewById(R.id.RadioButton05)
         };
 
+        amountLabelList.add((TextView) findViewById(R.id.lblPoints1));
+        amountLabelList.add((TextView) findViewById(R.id.lblPoints2));
+        amountLabelList.add((TextView) findViewById(R.id.lblPoints3));
+        amountLabelList.add((TextView) findViewById(R.id.lblPoints4));
+        for (TextView item : amountLabelList) {
+            item.setText("");
+        }
         refreshResult();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        long[] players = (long[])getIntent().getLongArrayExtra(
-                AddScoreActivity.EXTRA_PLAYER_IDS);
+        long[] players = getPlayerIds();
 
         TextView[][] nameLabels = new TextView[][] {
                 {(TextView)findViewById(R.id.lblPlayerName1_1)},
@@ -145,22 +151,6 @@ public class AddScoreActivity extends GuiceActivity {
             if (playerRound.getWind() == PlayerRound.windEnum.EAST) {
                 calculator.setEastPlayer(index);
             }
-
-//            int wind = (index - eastPosition + 4) % 4;
-//            switch (wind) {
-//                case 0:
-//                    windLabels[index].setText(R.string.east);
-//                    break;
-//                case 1:
-//                    windLabels[index].setText(R.string.south);
-//                    break;
-//                case 2:
-//                    windLabels[index].setText(R.string.west);
-//                    break;
-//                case 3:
-//                    windLabels[index].setText(R.string.north);
-//                    break;
-//            }
         }
     }
 
@@ -172,18 +162,12 @@ public class AddScoreActivity extends GuiceActivity {
         buttonList.add(findViewById(R.id.cmdSet2));
         buttonList.add(findViewById(R.id.cmdSet3));
         buttonList.add(findViewById(R.id.cmdSet4));
-        final int player = buttonList.indexOf(view);
-
-        final List<TextView> labelList = new ArrayList<TextView>();
-        labelList.add((TextView) findViewById(R.id.lblPoints1));
-        labelList.add((TextView) findViewById(R.id.lblPoints2));
-        labelList.add((TextView) findViewById(R.id.lblPoints3));
-        labelList.add((TextView) findViewById(R.id.lblPoints4));
+        final int playerIndex = buttonList.indexOf(view);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-//        alert.setTitle("Title");
-        alert.setMessage("Enter amount for " + calculator.getPlayerName(player));
+        long[] playerIds = getPlayerIds();
+        Person person = personService.findById(playerIds[playerIndex]);
+        alert.setMessage("Enter amount for " + person.getName());
 
         // Set an EditText view to get user input
         final EditText input = new EditText(this);
@@ -192,10 +176,15 @@ public class AddScoreActivity extends GuiceActivity {
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
         public void onClick(DialogInterface dialog, int whichButton) {
-          String value = input.getText().toString();
+            Integer value = null;
+            try{
+                value = Integer.valueOf(input.getText().toString());
+            } catch (NumberFormatException ex) {
+                return;
+            }
             Log.d(TAG, "value: " + value);
-            labelList.get(player).setText(value);
-            calculator.setPlayerScore(player, Integer.valueOf(value));
+            amountLabelList.get(playerIndex).setText(value.toString());
+            calculator.setPlayerScore(playerIndex, value);
             refreshResult();
           }
         });
@@ -245,20 +234,29 @@ public class AddScoreActivity extends GuiceActivity {
     }
 
     public void onSaveClick(View view) {
+        for (int index = 0; index < calculator.getPlayerCount(); index++) {
+            if (calculator.getPlayerScore(index) == null) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.setMessage(R.string.add_amount_each_player);
+                alert.setPositiveButton(R.string.ok, null);
+                alert.show();
+
+                return;
+            }
+        }
         Integer[][] result = calculator.getResult();
         Round round = new Round();
         round.setTime_stamp(new Date());
         roundService.saveOrUpdate(round);
 
-        long[] players = (long[])getIntent().getLongArrayExtra(
-                AddScoreActivity.EXTRA_PLAYER_IDS);
+        long[] players = getPlayerIds();
         int index = 0;
         for (long playerId : players) {
             PlayerRound playerRound = new PlayerRound();
             playerRound.setPersonId(playerId);
             playerRound.setRoundId(round.getId());
             if (calculator == null) Log.w(TAG, "calculator is null");
-            if (calculator != null && calculator.getWinner() != null) {
+            if (calculator != null) {
                 int wind = (index + 4 - calculator.getEastPlayer()) % 4;
                 switch (wind) {
                     case 0:
@@ -296,5 +294,10 @@ public class AddScoreActivity extends GuiceActivity {
         }
 
         finish();
+    }
+
+    private long[] getPlayerIds() {
+        return (long[])getIntent().getLongArrayExtra(
+                    AddScoreActivity.EXTRA_PLAYER_IDS);
     }
 }

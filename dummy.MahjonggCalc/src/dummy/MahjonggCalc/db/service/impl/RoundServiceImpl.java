@@ -113,6 +113,7 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
         Round round = new Round();
         round.setId(cursor.getLong(0));
         round.setWinner(cursor.getLong(1));
+        Log.d(TAG, "winner is: " + round.getWinner());
 
         for (int index = 0; index < 4; index++) {
             PlayerRound playerRound1 = new PlayerRound();

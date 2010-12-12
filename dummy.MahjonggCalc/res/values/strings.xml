@@ -19,4 +19,6 @@
     <string name="player4">Player 4</string>
     <string name="start_game">Start Game</string>
     <string name="add_scores">Add Scores</string>
+    <string name="add_amount_each_player">Please enter an amount for each player.</string>
+    <string name="ok">Ok</string>
 </resources>

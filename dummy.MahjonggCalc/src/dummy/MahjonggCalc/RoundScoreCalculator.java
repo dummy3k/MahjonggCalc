@@ -17,12 +17,20 @@ public class RoundScoreCalculator {
 		playerScores[player] = score;
 	}
 	
+	public Integer getPlayerScore(int player) {
+		return playerScores[player];
+	}
+
 	public void setWinner(Integer player) {
 		winner = player;
 	}
 
     public Integer getWinner() {
         return winner;
+    }
+
+    public int getPlayerCount() {
+        return playerScores.length;
     }
 
     public Integer[][] getResult() {
