@@ -64,6 +64,8 @@ public class GameSessionActivity extends GuiceActivity {
         RoundListAdapter adapter = new RoundListAdapter(this,
                 R.layout.game_session_listitem, R.id.TextView01,
                 roundsArray);
+        list.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+        list.setStackFromBottom(true);
         list.setAdapter(adapter);
 
         int sums[] = new int[4];
