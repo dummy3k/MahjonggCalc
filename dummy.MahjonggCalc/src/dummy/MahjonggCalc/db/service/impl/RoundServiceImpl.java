@@ -18,25 +18,26 @@ import java.util.List;
 public class RoundServiceImpl extends AbstractServiceImpl<Round> implements RoundService {
     private static final String TAG = "RoundServiceImpl";
 
-	@Inject private PlayerRoundService PlayerRoundService;
+	@Inject private PlayerRoundService playerRoundService;
 
 	@Override
 	protected Round read(Cursor cursor) {
 		Round obj = new Round();
 		obj.setId(cursor.getLong(cursor.getColumnIndex("id")));
-		obj.setTime_stamp(parseDate(cursor, "time_stamp"));
+		obj.setTimeStamp(parseDate(cursor, "time_stamp"));
         obj.setWinner(cursor.getLong(cursor.getColumnIndex("winner")));
 
-		List<PlayerRound> cells = PlayerRoundService.findAllByRoundId(obj.getId());
+		List<PlayerRound> cells = playerRoundService.findAllByRoundId(obj.getId());
 		obj.setPlayers(cells);
 		
 		return obj;
 	}
-	
+
 	private void __updatePlayers__(Round obj) {
 		if(obj.getPlayers() != null) {
-			for(PlayerRound PlayerRound  : obj.getPlayers()) {
-				PlayerRoundService.saveOrUpdate(PlayerRound);
+			for(PlayerRound playerRound : obj.getPlayers()) {
+                playerRound.setRoundId(obj.getId());
+				playerRoundService.saveOrUpdate(playerRound);
 			}
 		}
 	}
@@ -169,6 +170,12 @@ public class RoundServiceImpl extends AbstractServiceImpl<Round> implements Roun
             players.add(playerRound);
         }
         retVal.setPlayers(players);
+        return retVal;
+    }
+
+    public Round withChildren(Long roundId) {
+        Round retVal = findById(roundId);
+        retVal.setPlayers(playerRoundService.findAllByRoundId(roundId));
         return retVal;
     }
 }

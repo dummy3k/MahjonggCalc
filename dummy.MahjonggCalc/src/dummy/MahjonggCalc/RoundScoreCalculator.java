@@ -13,7 +13,7 @@ public class RoundScoreCalculator {
 		this.eastPlayer = eastPlayer;
 	}
 
-	public void setPlayerScore(int player, int score) {
+	public void setPlayerScore(int player, Integer score) {
 		playerScores[player] = score;
 	}
 	

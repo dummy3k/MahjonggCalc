@@ -18,7 +18,6 @@ import dummy.MahjonggCalc.db.service.RoundService;
 import roboguice.activity.GuiceActivity;
 import roboguice.inject.InjectView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameSessionActivity extends GuiceActivity {
@@ -45,6 +44,10 @@ public class GameSessionActivity extends GuiceActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_session_activity);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			 public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                 onListItemClick(a, v, position, id);
+			 }});
     }
 
     @Override
@@ -167,13 +170,20 @@ public class GameSessionActivity extends GuiceActivity {
 
         }
         intent.putExtra(AddScoreActivity.EXTRA_PLAYER_IDS, playerIds);
-//        intent.putExtra(AddScoreActivity.EXTRA_EAST_PLAYER_ID, eastPlayerId);
-
         startActivity(intent);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+    }
+
+
+    public void onListItemClick(AdapterView<?> a, View v, int position, long id) {
+        Intent intent = new Intent(this, AddScoreActivity.class);
+        Round listItem = (Round)list.getItemAtPosition(position);
+        Log.d(TAG, "listItem.getId(): " + listItem.getId());
+        intent.putExtra(AddScoreActivity.EXTRA_ROUND_ID, listItem.getId());
+        startActivity(intent);
     }
 }

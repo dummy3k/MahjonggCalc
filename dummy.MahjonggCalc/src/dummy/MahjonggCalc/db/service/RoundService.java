@@ -12,4 +12,5 @@ public interface RoundService extends Service<Round> {
     List<Round> findAllByPlayers(long[] ids, Resources resources);
     Round lastRound(long[] ids, Resources resources);
     Round newRound(long[] ids);
+    Round withChildren(Long roundId);
 }

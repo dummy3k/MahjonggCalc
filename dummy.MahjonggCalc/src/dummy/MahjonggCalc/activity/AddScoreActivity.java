@@ -27,12 +27,14 @@ import java.util.List;
 
 public class AddScoreActivity extends GuiceActivity {
     public static final String EXTRA_PLAYER_IDS = "players";
+    public static final String EXTRA_ROUND_ID = "round_id";
 
 	private static final String TAG = "AddScoreActivity";
     private RoundScoreCalculator calculator = new RoundScoreCalculator();
     private TextView[][] labelArray;
-    private RadioButton eastRadioButtons[];
+    private RadioButton winnerRadioButtons[];
     private final List<TextView> amountLabelList = new ArrayList<TextView>();
+    private Round round;
 
     @Inject
     private PlayerRoundService playerRoundService;
@@ -80,7 +82,7 @@ public class AddScoreActivity extends GuiceActivity {
                 }
         };
 
-        eastRadioButtons = new RadioButton[] {
+        winnerRadioButtons = new RadioButton[] {
                 (RadioButton)findViewById(R.id.RadioButton01),
                 (RadioButton)findViewById(R.id.RadioButton02),
                 (RadioButton)findViewById(R.id.RadioButton03),
@@ -101,7 +103,6 @@ public class AddScoreActivity extends GuiceActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        long[] players = getPlayerIds();
 
         TextView[][] nameLabels = new TextView[][] {
                 {(TextView)findViewById(R.id.lblPlayerName1_1)},
@@ -117,41 +118,48 @@ public class AddScoreActivity extends GuiceActivity {
                 (TextView)findViewById(R.id.lblWind04),
         };
 
-//        Long eastPlayer =(long)getIntent().getLongExtra(EXTRA_EAST_PLAYER_ID, Person.ID_NOBODY);
-//        int eastPosition = -1;
-//        for (int index = 0; index < players.length; index++) {
-//            if (players[index] == eastPlayer) {
-//                eastPosition = index;
-//                calculator.setEastPlayer(index);
-//                break;
-//            }
-//        }
-//        if (eastPosition < 0) throw new RuntimeException("no east position");
+        Long roundId = getIntent().getLongExtra(EXTRA_ROUND_ID, -1);
+        if (roundId > 0) {
+            Log.d(TAG, "loading round: " + roundId);
+            round = roundService.withChildren(roundId);
+        }   else {
 
-
-        Round lastRound = roundService.lastRound(players, getResources());
-        Round round = null;
-        if (lastRound != null) {
-            for (PlayerRound item : lastRound.getPlayers()) {
-                Person person = personService.findById(item.getPersonId());
-                Log.d(TAG, "wind: " + item.getWind("<null>") + ", person: " + person.getName());
+            long[] players = (long[])getIntent().getLongArrayExtra(
+                    AddScoreActivity.EXTRA_PLAYER_IDS);
+            Round lastRound = roundService.lastRound(players, getResources());
+            if (lastRound != null) {
+                for (PlayerRound item : lastRound.getPlayers()) {
+                    Person person = personService.findById(item.getPersonId());
+                    Log.d(TAG, "wind: " + item.getWind("<null>") + ", person: " + person.getName());
+                }
+                NextRoundLogic roundLogic = new NextRoundLogic();
+                round = roundLogic.next(lastRound);
+            } else {
+                round = roundService.newRound(players);
             }
-            NextRoundLogic roundLogic = new NextRoundLogic();
-            round = roundLogic.next(lastRound);
-        } else {
-            round = roundService.newRound(players);
+            round.setTimeStamp(new Date());
         }
 
-        for (int index = 0; index < players.length; index++) {
-            PlayerRound playerRound = round.getPlayers().get(index);
-            Person person = personService.findById(players[index]);
+        int index = 0;
+        for (PlayerRound playerRound : round.getPlayers()) {
+            Person person = personService.findById(playerRound.getPersonId());
             nameLabels[index][0].setText(person.getName());
             windLabels[index].setText(playerRound.getWind().toString(getResources()));
 
             if (playerRound.getWind() == PlayerRound.windEnum.EAST) {
                 calculator.setEastPlayer(index);
             }
+            if (playerRound.getPersonId().equals(round.getWinner())) {
+                winnerRadioButtons[index].setChecked(true);
+                calculator.setWinner(index);
+            }
+            calculator.setPlayerScore(index, playerRound.getPoints());
+            if (playerRound.getPoints() != null) {
+                amountLabelList.get(index).setText(playerRound.getPoints().toString());
+            }
+            index++;
         }
+        refreshResult();
     }
 
     public void onSetPointsClick(View view) {
@@ -164,14 +172,25 @@ public class AddScoreActivity extends GuiceActivity {
         buttonList.add(findViewById(R.id.cmdSet4));
         final int playerIndex = buttonList.indexOf(view);
 
+        Log.d(TAG, "playerIndex: " + playerIndex);
+        if (round == null) {
+            Log.w(TAG, "round is null");
+        }
+        if (round.getPlayers() == null) {
+            Log.w(TAG, "round.getPlayers() is null");
+        }
+        Log.d(TAG, "round.getPlayers().size(): " + round.getPlayers().size());
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        long[] playerIds = getPlayerIds();
-        Person person = personService.findById(playerIds[playerIndex]);
+        PlayerRound playerRound = round.getPlayers().get(playerIndex);
+        Person person = personService.findById(playerRound.getPersonId());
         alert.setMessage("Enter amount for " + person.getName());
 
         // Set an EditText view to get user input
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        if (playerRound.getPoints() != null) {
+            input.setText(playerRound.getPoints().toString());
+        }
         alert.setView(input);
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -202,10 +221,10 @@ public class AddScoreActivity extends GuiceActivity {
     public void onWinnerSelect(View view) {
     	Log.d(TAG, "onWinnerSelect");
         Integer winner = 0;
-    	for (RadioButton item : eastRadioButtons) {
+    	for (RadioButton item : winnerRadioButtons) {
     		item.setChecked(item == view);
             if (item == view) {
-                if (view == eastRadioButtons[4]) {
+                if (view == winnerRadioButtons[4]) {
                     calculator.setWinner(null);
                 } else {
                     calculator.setWinner(winner);
@@ -245,36 +264,35 @@ public class AddScoreActivity extends GuiceActivity {
             }
         }
         Integer[][] result = calculator.getResult();
-        Round round = new Round();
-        round.setTime_stamp(new Date());
-        roundService.saveOrUpdate(round);
+//        Round round = new Round();
+//        round.setTimeStamp(new Date());
 
-        long[] players = getPlayerIds();
         int index = 0;
-        for (long playerId : players) {
-            PlayerRound playerRound = new PlayerRound();
-            playerRound.setPersonId(playerId);
-            playerRound.setRoundId(round.getId());
-            if (calculator == null) Log.w(TAG, "calculator is null");
-            if (calculator != null) {
-                int wind = (index + 4 - calculator.getEastPlayer()) % 4;
-                switch (wind) {
-                    case 0:
-                        playerRound.setWind(PlayerRound.windEnum.EAST);
-                        break;
-                    case 1:
-                        playerRound.setWind(PlayerRound.windEnum.SOUTH);
-                        break;
-                    case 2:
-                        playerRound.setWind(PlayerRound.windEnum.WEST);
-                        break;
-                    case 3:
-                        playerRound.setWind(PlayerRound.windEnum.NORTH);
-                        break;
-                    default:
-                        Log.w(TAG, "unknown wind");
-                }
-            }
+        for (PlayerRound playerRound : round.getPlayers()) {
+//            PlayerRound playerRound = new PlayerRound();
+//            playerRound.setPersonId(playerId);
+//            playerRound.setRoundId(round.getId());
+//            if (calculator == null) Log.w(TAG, "calculator is null");
+//            if (calculator != null) {
+//                int wind = (index + 4 - calculator.getEastPlayer()) % 4;
+//                playerRound.setWind();
+//                switch (wind) {
+//                    case 0:
+//                        playerRound.setWind(PlayerRound.windEnum.EAST);
+//                        break;
+//                    case 1:
+//                        playerRound.setWind(PlayerRound.windEnum.SOUTH);
+//                        break;
+//                    case 2:
+//                        playerRound.setWind(PlayerRound.windEnum.WEST);
+//                        break;
+//                    case 3:
+//                        playerRound.setWind(PlayerRound.windEnum.NORTH);
+//                        break;
+//                    default:
+//                        Log.w(TAG, "unknown wind");
+//                }
+//            }
 
             int sum = 0;
             for (int x = 0; x < 4; x++) {
@@ -287,18 +305,14 @@ public class AddScoreActivity extends GuiceActivity {
 
             if (calculator.getWinner() != null &&
                     calculator.getWinner() == index) {
-                round.setWinner(playerId);
+                round.setWinner(playerRound.getPersonId());
                 roundService.saveOrUpdate(round);
             }
-            playerRoundService.saveOrUpdate(playerRound);
+//            playerRoundService.saveOrUpdate(playerRound);
             index++;
         }
+        roundService.saveOrUpdate(round);
 
         finish();
-    }
-
-    private long[] getPlayerIds() {
-        return (long[])getIntent().getLongArrayExtra(
-                    AddScoreActivity.EXTRA_PLAYER_IDS);
     }
 }

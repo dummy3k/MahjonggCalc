@@ -21,8 +21,11 @@ public class NextRoundLogic {
             throw new RuntimeException("this should not happen");
         }
         retVal.setId(null);
+        retVal.setWinner(null);
         for (PlayerRound item : retVal.getPlayers()) {
             item.setId(null);
+            item.setAmount(null);
+            item.setPoints(null);
         }
 
         if (previous.getWinner() == null ||

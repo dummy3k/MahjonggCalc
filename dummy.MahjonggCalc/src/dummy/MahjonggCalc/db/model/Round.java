@@ -67,7 +67,7 @@ public class Round implements Model, Cloneable {
         return time_stamp;
     }
 
-    public void setTime_stamp(Date time_stamp) {
+    public void setTimeStamp(Date time_stamp) {
         this.time_stamp = time_stamp;
     }
 
