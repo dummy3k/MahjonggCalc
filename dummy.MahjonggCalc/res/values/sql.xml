@@ -12,7 +12,8 @@
             id INTEGER PRIMARY KEY,
             round_id INTEGER,
             person_id INTEGER,
-            amount FLOAT,
+            amount INTEGER,
+            points INTEGER,
             wind INTEGER,
             FOREIGN KEY(round_id) REFERENCES rounds(id)
         );

@@ -275,7 +275,6 @@ public class AddScoreActivity extends GuiceActivity {
                         Log.w(TAG, "unknown wind");
                 }
             }
-            roundService.saveOrUpdate(round);
 
             int sum = 0;
             for (int x = 0; x < 4; x++) {
@@ -284,10 +283,12 @@ public class AddScoreActivity extends GuiceActivity {
                 }
             }
             playerRound.setAmount(sum);
+            playerRound.setPoints(calculator.getPlayerScore(index));
 
             if (calculator.getWinner() != null &&
                     calculator.getWinner() == index) {
                 round.setWinner(playerId);
+                roundService.saveOrUpdate(round);
             }
             playerRoundService.saveOrUpdate(playerRound);
             index++;

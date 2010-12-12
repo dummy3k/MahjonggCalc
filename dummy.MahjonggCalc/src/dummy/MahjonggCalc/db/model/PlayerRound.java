@@ -6,8 +6,9 @@ import dummy.MahjonggCalc.R;
 public class PlayerRound implements Model, Cloneable {
 	private Long id;
     private Long roundId;
-    private Long person_id;
+    private Long personId;
     private Integer amount;
+    private Integer points;
 
     public enum windEnum {
         EAST(0),
@@ -41,20 +42,6 @@ public class PlayerRound implements Model, Cloneable {
             }
             throw new RuntimeException("wtf");
         }
-
-//        public windEnum next() {
-//            switch (this) {
-//                case EAST:
-//                    return SOUTH;
-//                case SOUTH:
-//                    return WEST;
-//                case WEST:
-//                    return NORTH;
-//                case NORTH:
-//                    return EAST;
-//            }
-//            throw new RuntimeException("wtf");
-//        }
     }
     private windEnum wind;
 
@@ -62,16 +49,16 @@ public class PlayerRound implements Model, Cloneable {
 
     }
 
+    public  PlayerRound(Long id, Long person_id, windEnum wind) {
+        this.id = id;
+        this.personId = person_id;
+        this.wind = wind;
+    }
+
     public PlayerRound clone() throws CloneNotSupportedException {
         return (PlayerRound)super.clone();
     }
 
-
-    public  PlayerRound(Long id, Long person_id, windEnum wind) {
-        this.id = id;
-        this.person_id = person_id;
-        this.wind = wind;
-    }
 
 	@Override
 	public String toString() {
@@ -95,11 +82,11 @@ public class PlayerRound implements Model, Cloneable {
     }
 
     public Long getPersonId() {
-        return person_id;
+        return personId;
     }
 
     public void setPersonId(Long person_id) {
-        this.person_id = person_id;
+        this.personId = person_id;
     }
 
     public Integer getAmount() {
@@ -132,4 +119,11 @@ public class PlayerRound implements Model, Cloneable {
         this.wind = wind;
     }
 
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
 }
