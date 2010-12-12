@@ -46,6 +46,12 @@
 
     </LinearLayout>
 
+    <dummy.MahjonggCalc.activity.GraphView
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:id="@+id/GraphView01"/>
+
+
     <ListView android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:id="@+id/ListView01"

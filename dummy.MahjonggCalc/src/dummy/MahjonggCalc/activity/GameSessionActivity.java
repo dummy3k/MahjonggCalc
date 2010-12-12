@@ -30,6 +30,9 @@ public class GameSessionActivity extends GuiceActivity {
     @InjectView(R.id.ListView01)
     ListView list;
 
+    @InjectView(R.id.GraphView01)
+    GraphView graph;
+
     @Inject
     private PersonService personService;
 
@@ -72,11 +75,14 @@ public class GameSessionActivity extends GuiceActivity {
         list.setAdapter(adapter);
 
         int sums[] = new int[4];
+        graph.setCountDataLines(sums.length);
+        graph.clearValues();
         for (Round item : rounds) {
             sums[0] += item.findPlayerRoundByPlayerId(personIds[0]).getAmount();
             sums[1] += item.findPlayerRoundByPlayerId(personIds[1]).getAmount();
             sums[2] += item.findPlayerRoundByPlayerId(personIds[2]).getAmount();
             sums[3] += item.findPlayerRoundByPlayerId(personIds[3]).getAmount();
+            graph.addValues(new Integer[]{sums[0], sums[1], sums[2], sums[3]});
         }
         View summaryView = findViewById(R.id.summaryListItem);
         ActivityTools.setLabel((TextView)summaryView.findViewById(
