@@ -130,55 +130,22 @@ public class GameSessionActivity extends GuiceActivity {
             Round round = mItems[position];
             View row = inflater.inflate(R.layout.game_session_listitem, null);
 
-            PlayerRound playerRound = round.findPlayerRoundByPlayerId(personIds[0]);
-            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView01),
-                    String.format("%s (%s)%s",
-                            playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0),
-                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
-                            ),
-                    playerRound.getAmount());
-
-            playerRound = round.findPlayerRoundByPlayerId(personIds[1]);
-            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView02),
-                    String.format("%s (%s)%s",
-                            playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0),
-                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
-                            ),
-                    playerRound.getAmount());
-
-            playerRound = round.findPlayerRoundByPlayerId(personIds[2]);
-            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView03),
-                    String.format("%s (%s)%s",
-                            playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0),
-                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
-                            ),
-                    playerRound.getAmount());
-
-            playerRound = round.findPlayerRoundByPlayerId(personIds[3]);
-            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView04),
-                    String.format("%s (%s)%s",
-                            playerRound.getAmount("-"),
-                            playerRound.getWind("-").charAt(0),
-                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : ""
-                            ),
-                    playerRound.getAmount());
-
-//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView01),
-//                    round.findPlayerRoundByPlayerId(personIds[0]).getAmount());
-//
-//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView02),
-//                    round.findPlayerRoundByPlayerId(personIds[1]).getAmount());
-//
-//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView03),
-//                    round.findPlayerRoundByPlayerId(personIds[2]).getAmount());
-//
-//            ActivityTools.setLabel((TextView)row.findViewById(R.id.TextView04),
-//                    round.findPlayerRoundByPlayerId(personIds[3]).getAmount());
-
+            setColumn(round, row, personIds[0], R.id.TextView01);
+            setColumn(round, row, personIds[1], R.id.TextView02);
+            setColumn(round, row, personIds[2], R.id.TextView03);
+            setColumn(round, row, personIds[3], R.id.TextView04);
             return row;
+        }
+
+        private void setColumn(Round round, View row, long playerId, int textViewId) {
+            PlayerRound playerRound = round.findPlayerRoundByPlayerId(playerId);
+            ActivityTools.setLabel((TextView) row.findViewById(textViewId),
+                    String.format("%s(%s) %s",
+                            playerRound.getPersonId().equals(round.getWinner()) ? "*" : "",
+                            playerRound.getWind("-").charAt(0),
+                            playerRound.getAmount("-")
+                    ),
+                    playerRound.getAmount());
         }
 
         private void setLabel(int layoutId, int index, View row) {

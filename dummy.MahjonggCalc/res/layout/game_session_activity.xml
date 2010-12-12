@@ -19,25 +19,25 @@
         >
 
         <include android:id="@+id/player1"
-                 android:layout_width="fill_parent"
+                 android:layout_width="0dp"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
                  />
         <include android:id="@+id/player2"
-                 android:layout_width="fill_parent"
+                 android:layout_width="0dp"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
                  />
         <include android:id="@+id/player3"
-                 android:layout_width="fill_parent"
+                 android:layout_width="0dp"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
                  />
         <include android:id="@+id/player4"
-                 android:layout_width="fill_parent"
+                 android:layout_width="0dp"
                  android:layout_height="wrap_content"
                  android:layout_weight="1"
                  layout="@layout/start_game_session_cell"
