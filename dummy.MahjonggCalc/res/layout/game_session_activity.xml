@@ -63,7 +63,7 @@
         android:layout_width="fill_parent"
         android:layout_height="2dip"
         android:background="@color/white"
-        ></View>
+        />
 
     <include layout="@layout/game_session_listitem"
             android:id="@+id/summaryListItem"
