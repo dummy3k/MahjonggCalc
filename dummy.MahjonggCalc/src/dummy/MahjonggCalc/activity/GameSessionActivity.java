@@ -192,4 +192,8 @@ public class GameSessionActivity extends GuiceActivity {
         intent.putExtra(AddScoreActivity.EXTRA_ROUND_ID, listItem.getId());
         startActivity(intent);
     }
+    
+    public void onSelectPersonClick(View view) {
+        Log.d(TAG, "onSelectPersonClick");
+    }
 }

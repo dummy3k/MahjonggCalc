@@ -14,7 +14,7 @@ public class ActivityTools {
     }
 
     public static void setLabel(TextView textView, String text, Integer value) {
-        textView.setText(text.toString());
+        textView.setText(text);
         if (value < 0) {
             textView.setTextColor(textView.getResources().getColor(R.color.red));
         } else {
