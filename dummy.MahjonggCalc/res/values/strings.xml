@@ -20,5 +20,6 @@
     <string name="start_game">Start Game</string>
     <string name="add_scores">Add Scores</string>
     <string name="add_amount_each_player">Please enter an amount for each player.</string>
+    <string name="select_winner">Please select the winner.</string>
     <string name="ok">Ok</string>
 </resources>

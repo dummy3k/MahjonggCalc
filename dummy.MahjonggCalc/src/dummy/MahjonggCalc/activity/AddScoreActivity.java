@@ -33,6 +33,7 @@ public class AddScoreActivity extends GuiceActivity {
     private RoundScoreCalculator calculator = new RoundScoreCalculator();
     private TextView[][] labelArray;
     private RadioButton winnerRadioButtons[];
+    private RadioButton selectedWinnerRadioButton = null;
     private final List<TextView> amountLabelList = new ArrayList<TextView>();
     private Round round;
 
@@ -233,6 +234,7 @@ public class AddScoreActivity extends GuiceActivity {
             winner++;
     	}
         refreshResult();
+        selectedWinnerRadioButton = (RadioButton)view;
     }
 
     private void refreshResult() {
@@ -259,10 +261,18 @@ public class AddScoreActivity extends GuiceActivity {
                 alert.setMessage(R.string.add_amount_each_player);
                 alert.setPositiveButton(R.string.ok, null);
                 alert.show();
-
                 return;
             }
         }
+
+        if (selectedWinnerRadioButton==null) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setMessage(R.string.select_winner);
+            alert.setPositiveButton(R.string.ok, null);
+            alert.show();
+            return;
+        }
+
         Integer[][] result = calculator.getResult();
 //        Round round = new Round();
 //        round.setTimeStamp(new Date());
@@ -304,7 +314,8 @@ public class AddScoreActivity extends GuiceActivity {
             playerRound.setPoints(calculator.getPlayerScore(index));
 
             if (calculator.getWinner() != null &&
-                    calculator.getWinner() == index) {
+                calculator.getWinner() == index) {
+
                 round.setWinner(playerRound.getPersonId());
                 roundService.saveOrUpdate(round);
             }

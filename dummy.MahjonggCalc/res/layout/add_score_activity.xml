@@ -38,7 +38,8 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="999,999"/>
-        <RadioButton android:id="@+id/RadioButton01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_vertical|center" android:onClick="onWinnerSelect"/>
+        <RadioButton android:id="@+id/RadioButton01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_vertical|center"
+                     android:onClick="onWinnerSelect"/>
         <Button android:id="@+id/cmdSet1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
