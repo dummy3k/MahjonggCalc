@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.view.View;
+import android.view.*;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -196,7 +196,7 @@ public class AddScoreActivity extends GuiceActivity {
 
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
         public void onClick(DialogInterface dialog, int whichButton) {
-            Integer value = null;
+            Integer value;
             try{
                 value = Integer.valueOf(input.getText().toString());
             } catch (NumberFormatException ex) {
@@ -326,4 +326,38 @@ public class AddScoreActivity extends GuiceActivity {
 
         finish();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+		Log.w(TAG, "onCreateOptionsMenu()");
+		MenuInflater inflater = getMenuInflater();
+    	inflater.inflate(R.menu.add_score_menu, menu);
+    	return true;
+    }
+
+    /**
+   	 * Called when menu item is selected
+   	 */
+   	@Override
+   	public boolean onOptionsItemSelected(MenuItem item) {
+       	Log.d(TAG, "onOptionsItemSelected()");
+   		switch (item.getItemId()) {
+               case R.id.set_east_player:
+                   item.getSubMenu().getItem(0).setTitle("hi there");
+                   break;
+               case R.id.player1:
+                   Log.d(TAG, "player1");
+                   break;
+               case R.id.player2:
+                   Log.d(TAG, "player2");
+                   break;
+//               MenuInflater inflater = getMenuInflater();
+//               inflater.inflate(R.menu.set_east_player, item.getM);
+   		default:
+   			Log.d(TAG, "unknown menu");
+   			return super.onOptionsItemSelected(item);
+   		}
+   		return true;
+   	}
+
 }
